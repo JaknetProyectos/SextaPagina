@@ -1,6 +1,7 @@
 import { ExperiencePage } from "@/components/ExperiencePage";
+import { useLocale } from "next-intl";
 
-export default function DecorationSorpresa() {
+function DecorationSorpresaES() {
     return (
         <ExperiencePage
             title="Decoración Sorpresa Hotel / Playa"
@@ -126,4 +127,144 @@ export default function DecorationSorpresa() {
             }
         />
     );
+}
+
+function DecorationSorpresaEn() {
+    return (
+        <ExperiencePage
+            title="Hotel / Beach Surprise Decoration"
+            heroImage="/images.png"
+            subtitle="Contact us to design your proposal completely to your measure."
+            description="We transform hotel rooms or private villas into perfect romantic settings to surprise for anniversaries, birthdays, or special getaways. Available in hotels and beach destinations across various cities in Mexico (prior coordination with the hotel required)."
+            slug="hotel-beach-surprise-decoration"
+            infoLists={[
+                {
+                    title: "Available in hotels, private villas, and suites in:",
+                    items: [
+                        "Cancun",
+                        "Tulum",
+                        "Playa del Carmen",
+                        "Los Cabos",
+                        "Puerto Vallarta",
+                        "Mexico City",
+                        "Guadalajara",
+                        "Merida",
+                    ],
+                    icon: "map",
+                    isOpen: true,
+                }
+            ]}
+            plans={[
+                {
+                    backgroundImage: "image.png",
+                    color: "#61a9bd",
+                    description: " ",
+                    features: [],
+                    name: "Essential Surprise",
+                    price: 16100,
+                    duration: "2 hours of setup and prior coordination with hotel",
+                    includes: [
+                        "Basic romantic decoration (petals, balloons, LED candles)",
+                        "Bottle of sparkling wine",
+                        "Special chocolates",
+                        "Logistics coordination",
+                        "10 candid photographs",
+                    ],
+                    notIncludes: [
+                        "Accommodation",
+                        "Romantic dinner (MXN $1,500 – $3,000)",
+                        "Full professional session",
+                    ],
+                    slug: "sorpresa-esencial"
+                },
+                {
+                    backgroundImage: "image.png",
+                    color: "#61a9bd",
+                    description: "For celebrations in boutique hotels or private villas.",
+                    features: [],
+                    name: "Signature Surprise",
+                    price: 28800,
+                    duration: "Custom setup + strategic coordination",
+                    includes: [
+                        "Abundant premium decoration",
+                        "High-end natural flowers",
+                        "Professional ambient lighting",
+                        "Premium sparkling wine or mixology",
+                        "Decorated romantic table",
+                        "Professional photographer",
+                        "30 edited photographs",
+                        "Romantic highlight video",
+                        "Full coordination with hotel",
+                    ],
+                    notIncludes: [
+                        "Accommodation",
+                        "Private gourmet dinner (additional quote)"
+                    ],
+                    slug: "sorpresa-signature"
+                },
+                {
+                    backgroundImage: "image.png",
+                    color: "#61a9bd",
+                    description: "Higher visual production and a more impactful experience.",
+                    features: [],
+                    name: "Luxury Destination Surprise",
+                    price: 28800,
+                    duration: "Custom setup + personalized coordination",
+                    includes: [
+                        "Enhanced romantic decoration (custom message, more floral, special lighting)",
+                        "Sparkling wine",
+                        "Gourmet box",
+                        "16 edited professional photographs",
+                        "Coordination with hotel and concierge",
+                    ],
+                    notIncludes: [
+                        "Accommodation",
+                        "Additional private dinner"
+                    ],
+                    slug: "sorpresa-luxury"
+                },
+            ]}
+
+            cotizacion={
+                {
+                    background: "images.png",
+                    title: "Custom Quote – Decorations",
+                    description: "We can carry out this experience in:",
+                    lists: [
+                        {
+                            subtitle: "Boutique hotels",
+                            items: [
+                                "Private beach villas",
+                                "Romantic cabins",
+                                "Executive suites",
+                                "Special destinations within Mexico",
+                            ]
+                        },
+                        {
+                            subtitle: "The final investment will depend on:",
+                            items: [
+                                "City or destination",
+                                "Production level",
+                                "Hotel policies",
+                                "Audiovisual coverage",
+                                "Transportation logistics",
+                            ]
+                        }
+                    ]
+                }
+            }
+        />
+    );
+}
+
+export default function DecorationSorpresaPage() {
+    const locale = useLocale();
+
+    switch (locale) {
+        case "en":
+            return <DecorationSorpresaEn />;
+        case "es":
+        default:
+            return <DecorationSorpresaES />;
+    }
 }

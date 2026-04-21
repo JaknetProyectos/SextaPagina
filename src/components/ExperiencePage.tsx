@@ -13,12 +13,11 @@ import {
   Star,
   Clock,
   Calendar,
-  Send,
   Plus,
   Sparkles,
   ShieldCheck
 } from "lucide-react";
-import { Link } from "@/i18n/routing";
+import { useTranslations, useLocale } from "next-intl";
 import { CustomQuoteSection } from "./CustomQuoteSection";
 import { PagarCotizacion } from "./PagarCotizacion";
 import { PlanDetailModal } from "./PlanDetailModal";
@@ -39,7 +38,7 @@ interface Plan {
   description: string;
   backgroundImage: string;
   color: string;
-  features: string[];
+  features?: string[];
   duration?: string;
   includes?: string[];
   notIncludes?: string[];
@@ -89,6 +88,8 @@ export function ExperiencePage({
   cotizacion,
   idealSectionTitle
 }: ExperiencePageProps) {
+  const t = useTranslations("ExperiencePage");
+  const locale = useLocale();
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
 
   useEffect(() => {
@@ -96,11 +97,16 @@ export function ExperiencePage({
     else document.body.style.overflow = "unset";
   }, [selectedPlan]);
 
+  const handleScroll = (id: string, distance: number) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollBy({ left: distance, behavior: 'smooth' });
+  };
+
   return (
     <main className="min-h-screen bg-white">
       <Header />
 
-      {/* 1. Hero Section - Bloque de impacto */}
+      {/* 1. Hero Section */}
       <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105"
@@ -108,14 +114,14 @@ export function ExperiencePage({
         >
           <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
         </div>
-        <div className="relative z-10 bg-white p-8 md:p-16 rounded-[40px] mx-4 max-w-4xl border-none">
+        <div className="relative z-10 bg-white p-8 md:p-16 rounded-[40px] mx-4 max-w-4xl border-none shadow-xl">
           <h1 className="text-4xl md:text-7xl font-black text-gray-900 text-center uppercase tracking-tighter leading-none">
             {title}
           </h1>
         </div>
       </section>
 
-      {/* 2. Sección Informativa - Contraste Limpio */}
+      {/* 2. Sección Informativa */}
       <section className="py-24 container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-20 items-start">
           <div className="space-y-8">
@@ -163,28 +169,28 @@ export function ExperiencePage({
         </div>
       </section>
 
-      {/* 3. Ideal Para - Slider Estilizado */}
+      {/* 3. Ideal Para - Slider */}
       {idealPara.length > 0 && (
         <section className="py-24 bg-gray-900 rounded-[60px] mx-4 my-12 overflow-hidden">
           <div className="container mx-auto px-8">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
               <div className="space-y-4">
                 <span className="bg-green-400 text-white px-6 py-2 rounded-full font-black uppercase text-sm tracking-widest">
-                  Perfiles
+                  {t("ideal_tag")}
                 </span>
                 <h2 className="text-4xl md:text-6xl font-black text-white uppercase leading-none">
-                  {idealSectionTitle ?? "Ideal para"}
+                  {idealSectionTitle ?? t("ideal_title")}
                 </h2>
               </div>
               <div className="flex gap-4">
                 <button
-                  onClick={() => document.getElementById('slider-ideal')?.scrollBy({ left: -432, behavior: 'smooth' })}
+                  onClick={() => handleScroll('slider-ideal', -432)}
                   className="p-6 rounded-2xl bg-white/10 text-white hover:bg-white hover:text-gray-900 transition-all"
                 >
                   <ChevronLeft className="w-8 h-8" />
                 </button>
                 <button
-                  onClick={() => document.getElementById('slider-ideal')?.scrollBy({ left: 432, behavior: 'smooth' })}
+                  onClick={() => handleScroll('slider-ideal', 432)}
                   className="p-6 rounded-2xl bg-white/10 text-white hover:bg-white hover:text-gray-900 transition-all"
                 >
                   <ChevronRight className="w-8 h-8" />
@@ -205,7 +211,7 @@ export function ExperiencePage({
                     <img
                       src={card.image}
                       alt={card.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-black/20" />
                   </div>
@@ -229,7 +235,7 @@ export function ExperiencePage({
         </section>
       )}
 
-      {/* 4. Planes - Cards de Color Sólido */}
+      {/* 4. Planes */}
       <section className="relative py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div 
@@ -242,7 +248,7 @@ export function ExperiencePage({
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
-              Nuestros Planes
+              {t("plans_title")}
             </h2>
             <div className="bg-green-400 w-24 h-3 mx-auto mt-6 rounded-full" />
           </div>
@@ -251,7 +257,7 @@ export function ExperiencePage({
             {plans.map((plan, i) => (
               <div 
                 key={i} 
-                className="rounded-[40px] p-12 text-center text-white flex flex-col items-center transition-transform hover:-translate-y-4 border-none" 
+                className="rounded-[40px] p-12 text-center text-white flex flex-col items-center transition-all hover:-translate-y-4 border-none shadow-2xl" 
                 style={{ backgroundColor: plan.color }}
               >
                 <div className="bg-white/20 p-4 rounded-2xl mb-8">
@@ -264,16 +270,18 @@ export function ExperiencePage({
                 
                 <div className="mt-auto w-full">
                   <div className="text-5xl font-black mb-2 tracking-tighter">
-                    <span className="text-2xl">$</span>
-                    {plan.price.toLocaleString()}
+                    <span className="text-2xl mr-1">$</span>
+                    {new Intl.NumberFormat(locale === 'es' ? 'es-MX' : 'en-US').format(plan.price)}
                   </div>
-                  <p className="text-xs font-black tracking-[0.2em] opacity-80 mb-10 uppercase">MXN • IVA INCLUIDO</p>
+                  <p className="text-xs font-black tracking-[0.2em] opacity-80 mb-10 uppercase">
+                    {t("price_suffix")}
+                  </p>
                   
                   <button
                     onClick={() => setSelectedPlan(plan)}
-                    className="w-full bg-white text-gray-900 py-6 rounded-2xl font-black uppercase tracking-widest text-lg hover:bg-gray-900 hover:text-white transition-all shadow-none"
+                    className="w-full bg-white text-gray-900 py-6 rounded-2xl font-black uppercase tracking-widest text-lg hover:bg-gray-900 hover:text-white transition-all"
                   >
-                    VER DETALLES
+                    {t("details_button")}
                   </button>
                 </div>
               </div>
@@ -282,16 +290,13 @@ export function ExperiencePage({
         </div>
       </section>
 
-      {/* COMPONENTES DINÁMICOS RESTANTES */}
       {selectedPlan && (
         <PlanDetailModal
           plan={selectedPlan}
-          
           exp={{
             name: title,
             slug: slug ?? title
           }}
-          
           onClose={() => setSelectedPlan(null)}
         />
       )}

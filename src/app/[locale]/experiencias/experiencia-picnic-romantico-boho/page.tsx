@@ -1,6 +1,7 @@
 import { ExperiencePage } from "@/components/ExperiencePage";
+import { useLocale } from "next-intl";
 
-export default function PicnicRomanticoPage() {
+function PicnicRomanticoES() {
     return (
         <ExperiencePage
             title="Experiencia Picnic Romántico / Boho en México"
@@ -176,4 +177,192 @@ export default function PicnicRomanticoPage() {
             }}
         />
     );
+}
+
+function PicnicRomanticoEN() {
+    return (
+        <ExperiencePage
+            title="Romantic / Boho Picnic Experience in Mexico"
+            subtitle="Live an intimate, aesthetic, and carefully designed moment"
+            heroImage="/images/picnic-hero.jpg"
+            image2="/images/picnic-boho-bg.jpg"
+            idealSectionTitle="Ideal for:"
+            description={`We create picnic-style experiences with boho-chic decor, handcrafted details, and an atmosphere designed to surprise, celebrate, or simply enjoy. Ideal in parks, private gardens, and natural destinations, adapting each setup to the surroundings to create a magical and relaxed environment.`}
+
+            infoLists={[
+                {
+                    title: "Cities",
+                    icon: "map",
+                    isOpen: true,
+                    items: [
+                        "Mexico City (Chapultepec, private gardens)",
+                        "Guadalajara",
+                        "Queretaro",
+                        "Puebla",
+                    ]
+                },
+                {
+                    title: "Natural Destinations / Magical Towns",
+                    icon: "star",
+                    items: [
+                        "Valle de Bravo",
+                        "Tepoztlan",
+                        "San Miguel de Allende",
+                        "Bacalar",
+                    ]
+                },
+                {
+                    title: "Beach Locations",
+                    icon: "star",
+                    items: [
+                        "Tulum",
+                        "Puerto Vallarta",
+                        "Los Cabos",
+                    ]
+                }
+            ]}
+
+            idealPara={[
+                {
+                    title: "Unforgettable Romantic Date",
+                    image: "/images/ideal-date.jpg",
+                    items: [
+                        "Every love story is different, and every celebration deserves a unique design."
+                    ]
+                },
+                {
+                    title: "Perfect for",
+                    image: "/images/ideal-proposals.jpg",
+                    items: [
+                        "Anniversaries",
+                        "Marriage proposals",
+                        "Special birthdays",
+                        "Surprise celebrations",
+                        "Unforgettable romantic dates",
+                    ]
+                },
+                {
+                    title: "We can also integrate additional elements such as:",
+                    image: "/images/ideal-bday.jpg",
+                    items: [
+                        "Special themed decoration",
+                        "Giant letters or personalized messages",
+                        "Premium flowers or special arrangements",
+                        "Custom gourmet dinner",
+                        "Mariachi or live musician",
+                        "Coordinated surprise experience",
+                        "Marriage proposal production",
+                        "Private transportation",
+                        "Time extension",
+                        "Extended photo and video coverage",
+                    ]
+                },
+                {
+                    title: "Our team designs each experience based on:",
+                    image: "/",
+                    items: [
+                        "Destination",
+                        "Number of guests",
+                        "Desired production level",
+                        "Type of experience",
+                        "Gastronomic preferences",
+                        "Visual coverage",
+                    ]
+                }
+            ]}
+
+            plans={[
+                {
+                    slug: "boho-esencial",
+                    name: "Essential Boho Picnic",
+                    price: 7500,
+                    color: "#D4A373",
+                    backgroundImage: "/images/picnic-esencial.jpg",
+                    duration: "2 hrs of experience (includes prior setup)",
+                    description: "Perfect for a simple yet elegant romantic surprise.",
+                    features: ["Standard Setup", "Cheese Board", "Wine Included"],
+                    includes: [
+                        "Basic boho setup (rug, cushions, decorated low table)",
+                        "Simple floral decoration",
+                        "Gourmet basket for 2 people",
+                        "Ambiance with candles and handcrafted details",
+                        "1 hour of photographer (10 edited photos)",
+                    ],
+                    notIncludes: [
+                        "Transportation (MXN $500 – $1,500 depending on destination)",
+                        "Live Chef",
+                        "Dessert bar",
+                    ]
+                },
+                {
+                    slug: "boho-signature",
+                    name: "Signature Romantic Boho Picnic",
+                    price: 12800,
+                    color: "#273449",
+                    backgroundImage: "/images/picnic-signature.jpg",
+                    duration: "3 hrs setup and 2 hrs picnic",
+                    description: "Our most requested experience. A perfect balance between romance, aesthetics, and careful production.",
+                    features: ["Gourmet Menu", "Premium Decoration", "Sparkling Wine"],
+                    includes: [
+                        "Full setup with premium boho decoration",
+                        "Elaborate floral arrangement",
+                        "Gourmet basket for 2 people",
+                        "Ambient music",
+                        "Professional photographer for 2 hours",
+                        "15 edited high-resolution photographs",
+                    ],
+                    notIncludes: [
+                        "Transportation (MXN $500 – $1,500 depending on destination)",
+                        "Live Chef (MXN $1,800)",
+                        "Dessert bar (MXN $1,200)",
+                    ]
+                },
+                {
+                    slug: "boho-luxury-proposal",
+                    name: "Luxury Proposal Boho Picnic Experience",
+                    price: 80000,
+                    color: "#BC6C25",
+                    backgroundImage: "/images/picnic-luxury.jpg",
+                    duration: "4 hrs custom setup and 3 hrs private experience",
+                    description: "A premium experience with full production, ideal for marriage proposals or unforgettable celebrations.",
+                    features: ["Surprise Logistics", "Photo & Video Included", "Live Violinist"],
+                    includes: [
+                        "Personalized conceptual design (prior moodboard)",
+                        "Luxury boho setup with premium furniture",
+                        "Abundant floral decoration and decorative candles",
+                        "Special sunset lighting or fairy lights",
+                        "High-level gourmet table",
+                        "Live Chef preparing select dishes",
+                        "Handcrafted dessert bar",
+                        "Bottle of sparkling wine or special mixology",
+                        "Professional photographer for 3 hrs",
+                        "20 edited photographs",
+                        "Cinematic highlight video (1 min)",
+                    ],
+                    notIncludes: [
+                        "Transportation outside the established zone (additional quote if applicable)",
+                    ]
+                }
+            ]}
+
+            cotizacion={{
+                background: "/images/quote-picnic.jpg",
+                title: "Custom Quote – Romantic Picnic",
+                description: "If you wish to have your experience in another city or destination, share the specific location with us and we will send you a personalized proposal considering permits, furniture, and transfer.",
+                lists: []
+            }}
+        />
+    );
+}
+
+export default function PicnicRomanticoPage() {
+    const locale = useLocale();
+
+    switch (locale) {
+        case "en":
+            return <PicnicRomanticoEN />;
+        case "es":
+        default:
+            return <PicnicRomanticoES />;
+    }
 }

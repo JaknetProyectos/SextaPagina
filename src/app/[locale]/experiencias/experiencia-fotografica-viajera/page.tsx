@@ -1,19 +1,23 @@
 import { ExperiencePage } from "@/components/ExperiencePage";
 import { Icon } from "lucide-react";
+import { useLocale } from "next-intl";
 import { title } from "process";
 
-export default function ExperienciaFotograficaPage() {
-    const data = {
-        title: "Experiencia Fotográfica Viajera en México",
-        slug: "fotografica-viajera",
-        subtitle: "Convierte tus viajes en recuerdos eternos",
-        heroImage: "/images/fotografia-hero.jpg", // Reemplazar con tu ruta real
-        image2: "/images/fotografia-planes-bg.jpg",
-        description: `Te ofrecemos una experiencia fotográfica profesional diseñada para capturar tu esencia en escenarios únicos de México. Ya sea en ciudades vibrantes, playas paradisíacas o encantadores Pueblos Mágicos, creamos imágenes que cuentan tu historia con estilo, naturalidad y emoción.
+function ExperienciaFotograficaPageES() {
 
-Trabajamos en distintas ciudades y destinos dentro de México, adaptando cada sesión al entorno, la luz y la arquitectura del lugar. Desde calles coloniales llenas de color hasta paisajes naturales impresionantes.`,
+    return <ExperiencePage
 
-        infoLists: [
+        title="Experiencia Fotográfica Viajera en México"
+        slug="fotografica-viajera"
+        subtitle="Convierte tus viajes en recuerdos eternos"
+        heroImage="/images/fotografia-hero.jpg"
+        image2="/images/fotografia-planes-bg.jpg"
+        description={`Te ofrecemos una experiencia fotográfica profesional diseñada para capturar tu esencia en escenarios únicos de México. Ya sea en ciudades vibrantes, playas paradisíacas o encantadores Pueblos Mágicos, creamos imágenes que cuentan tu historia con estilo, naturalidad y emoción
+
+Trabajamos en distintas ciudades y destinos dentro de México, adaptando cada sesión al entorno, la luz y la arquitectura del lugar. Desde calles coloniales llenas de color hasta paisajes naturales impresionantes.`}
+
+
+        infoLists={[
             {
                 title: "Destinos Disponibles",
                 icon: "map" as const,
@@ -41,7 +45,7 @@ Trabajamos en distintas ciudades y destinos dentro de México, adaptando cada se
             },
             {
                 title: "Pueblos Mágicos ideales para sesión",
-                Icon: "map",
+                icon: "map",
                 items: [
                     "San Miguel de Allende",
                     "Valle de Bravo",
@@ -51,11 +55,11 @@ Trabajamos en distintas ciudades y destinos dentro de México, adaptando cada se
                     "Huasca de Ocampo",
                 ]
             }
-        ],
+        ]}
 
 
 
-        plans: [
+        plans={[
             {
                 slug: "mini-sesion-express",
                 name: "Mini Sesión Express Viajera",
@@ -125,9 +129,9 @@ Trabajamos en distintas ciudades y destinos dentro de México, adaptando cada se
                     "Maquillaje profesional (opcional)"
                 ]
             }
-        ],
+        ]}
 
-        cotizacion: {
+        cotizacion={{
             background: "/images/quote-bg-photo.jpg",
             title: "Cotización Personalizada – Fotografía",
             description: "Si tu destino no se encuentra en nuestra lista, indícanos la ciudad, playa o Pueblo Mágico de tu preferencia para enviarte una cotización personalizada.",
@@ -138,34 +142,210 @@ Trabajamos en distintas ciudades y destinos dentro de México, adaptando cada se
                 }
             ]
         }
-    };
-
-    return <ExperiencePage {...data} idealSectionTitle="¿Qué hace diferente esta experiencia?" idealPara={[
-        {
-            title: " ",
-            items: [
-                "Planeación personalizada según el destino",
-                "Asesoría de vestuario para armonizar con el entorno",
-                "Dirección profesional durante toda la sesión",
-                "Edición cuidada que resalta luz, color y detalles",
-                "Entrega digital privada y segura",
-            ],
-            image: "https://plus.unsplash.com/premium_photo-1674389991679-e1a7a0b3e0a7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        },
-        {
-            title: " ",
-            items: ["Cada sesión está pensada para parejas, viajeras, celebraciones especiales, cumpleaños, aniversarios, viajes con amigas o simplemente para regalarte un recuerdo inolvidable."],
-            image: "https://plus.unsplash.com/premium_photo-1674389991679-e1a7a0b3e0a7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        },
-        {
-            title: "No es solo una sesión de fotos.",
-            items: ["Es una forma de capturar momentos irrepetibles en los lugares más especiales de México."],
-            image: "https://plus.unsplash.com/premium_photo-1674389991679-e1a7a0b3e0a7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        },
-        {
-            title: "Contáctanos",
-            items: [" y diseñemos juntos tu experiencia fotográfica en el destino que tengas en mente."],
-            image: "https://plus.unsplash.com/premium_photo-1674389991679-e1a7a0b3e0a7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         }
-    ]} />;
+        idealSectionTitle="¿Qué hace diferente esta experiencia?" idealPara={[
+            {
+                title: " ",
+                items: [
+                    "Planeación personalizada según el destino",
+                    "Asesoría de vestuario para armonizar con el entorno",
+                    "Dirección profesional durante toda la sesión",
+                    "Edición cuidada que resalta luz, color y detalles",
+                    "Entrega digital privada y segura",
+                ],
+                image: "https://plus.unsplash.com/premium_photo-1674389991679-e1a7a0b3e0a7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            },
+            {
+                title: " ",
+                items: ["Cada sesión está pensada para parejas, viajeras, celebraciones especiales, cumpleaños, aniversarios, viajes con amigas o simplemente para regalarte un recuerdo inolvidable."],
+                image: "https://plus.unsplash.com/premium_photo-1674389991679-e1a7a0b3e0a7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            },
+            {
+                title: "No es solo una sesión de fotos.",
+                items: ["Es una forma de capturar momentos irrepetibles en los lugares más especiales de México."],
+                image: "https://plus.unsplash.com/premium_photo-1674389991679-e1a7a0b3e0a7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            },
+            {
+                title: "Contáctanos",
+                items: [" y diseñemos juntos tu experiencia fotográfica en el destino que tengas en mente."],
+                image: "https://plus.unsplash.com/premium_photo-1674389991679-e1a7a0b3e0a7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }
+        ]} />;
+}
+
+function ExperienciaFotograficaEn() {
+    return (
+        <ExperiencePage
+            title="Travel Photography Experience in Mexico"
+            slug="travel-photography"
+            subtitle="Turn your travels into eternal memories"
+            heroImage="/images/fotografia-hero.jpg"
+            image2="/images/fotografia-planes-bg.jpg"
+            description={`We offer you a professional photographic experience designed to capture your essence in Mexico's unique settings. Whether in vibrant cities, paradisiacal beaches, or charming "Pueblos Mágicos," we create images that tell your story with style, naturalness, and emotion.
+
+We work across different cities and destinations within Mexico, adapting each session to the environment, light, and architecture of the place. From colorful colonial streets to breathtaking natural landscapes.`}
+            infoLists={[
+                {
+                    title: "Available Destinations",
+                    icon: "map",
+                    items: [
+                        "Mexico City (Historic Center, Roma, Coyoacán, Xochimilco)",
+                        "Guadalajara",
+                        "Monterrey",
+                        "Puebla",
+                        "Queretaro",
+                        "Merida",
+                    ],
+                    isOpen: true
+                },
+                {
+                    title: "Beach Destinations",
+                    icon: "star",
+                    items: [
+                        "Cancun",
+                        "Tulum",
+                        "Playa del Carmen",
+                        "Puerto Vallarta",
+                        "Los Cabos",
+                        "Mazatlan",
+                    ]
+                },
+                {
+                    title: "Ideal Magical Towns (Pueblos Mágicos)",
+                    icon: "map",
+                    items: [
+                        "San Miguel de Allende",
+                        "Valle de Bravo",
+                        "Tepoztlán",
+                        "Bacalar",
+                        "Bernal",
+                        "Huasca de Ocampo",
+                    ]
+                }
+            ]}
+            plans={[
+                {
+                    slug: "mini-sesion-express",
+                    name: "Traveler Express Mini Session",
+                    price: 2500,
+                    color: "#F4845F",
+                    backgroundImage: "/images/plan-mini.jpg",
+                    duration: "45 Minutes",
+                    description: "Perfect for spontaneous memories, natural social media content, or a quick glimpse of your trip in a single spot.",
+                    features: ["15 Edited photos", "1 Location", "3-day delivery"],
+                    includes: [
+                        "45-min photo session",
+                        "15 High-resolution photographs",
+                        "Basic digital editing (color and light)",
+                        "Private digital gallery",
+                        "Use of 1 outfit"
+                    ],
+                    notIncludes: [
+                        "Hair and makeup",
+                        "Unlimited outfit changes",
+                        "Transportation between locations",
+                        "Physical prints"
+                    ]
+                },
+                {
+                    slug: "sesion-viajera-media",
+                    name: "Mid-Range Traveler Session",
+                    price: 10500,
+                    color: "#273449",
+                    backgroundImage: "/images/plan-media.jpg",
+                    duration: "2 to 3 Hours",
+                    description: "An experience designed to capture your essence in unforgettable settings, ideal for couples or travelers seeking variety.",
+                    features: ["45 Edited photos", "2-3 Locations", "Outfit styling advice"],
+                    includes: [
+                        "Up to 3-hour session",
+                        "45 Photographs with advanced editing",
+                        "Up to 2 outfit changes",
+                        "Multiple spots within one area",
+                        "Previous location scouting advice",
+                        "Delivery in 5 business days"
+                    ],
+                    notIncludes: [
+                        "Travel expenses outside CDMX/Base zone",
+                        "Entrance fees to museums or private venues",
+                        "Professional video (available as an extra)"
+                    ]
+                },
+                {
+                    slug: "experiencia-premium",
+                    name: "Premium Traveler Photo Experience",
+                    price: 15600,
+                    color: "#E63946",
+                    backgroundImage: "/images/plan-premium.jpg",
+                    duration: "Half Day (5-6 Hours)",
+                    description: "A full production to capture your story with cinematic style and maximum variety of settings.",
+                    features: ["90 Edited photos", "Cinematic Production", "Fine Art Editing"],
+                    includes: [
+                        "Half-day session",
+                        "90 Photographs with high-end retouching",
+                        "Unlimited outfit changes",
+                        "Complete photographic storytelling",
+                        "Comprehensive visual concept advice",
+                        "Priority delivery (48 hrs)"
+                    ],
+                    notIncludes: [
+                        "Photographer accommodation (if applicable)",
+                        "Special equipment rental (Cinema Drones)",
+                        "Professional makeup (optional)"
+                    ]
+                }
+            ]}
+            idealSectionTitle="What makes this experience different?"
+            idealPara={[
+                {
+                    title: " ",
+                    items: [
+                        "Custom planning according to the destination",
+                        "Wardrobe advice to harmonize with the surroundings",
+                        "Professional direction throughout the session",
+                        "Careful editing highlighting light, color, and details",
+                        "Private and secure digital delivery",
+                    ],
+                    image: "https://plus.unsplash.com/premium_photo-1674389991679-e1a7a0b3e0a7?q=80&w=387&auto=format&fit=crop"
+                },
+                {
+                    title: " ",
+                    items: ["Each session is designed for couples, travelers, special celebrations, birthdays, anniversaries, trips with friends, or simply to give yourself an unforgettable memory."],
+                    image: "https://plus.unsplash.com/premium_photo-1674389991679-e1a7a0b3e0a7?q=80&w=387&auto=format&fit=crop"
+                },
+                {
+                    title: "It's not just a photo session.",
+                    items: ["It's a way to capture unrepeatable moments in Mexico's most special places."],
+                    image: "https://plus.unsplash.com/premium_photo-1674389991679-e1a7a0b3e0a7?q=80&w=387&auto=format&fit=crop"
+                },
+                {
+                    title: "Contact us",
+                    items: ["and let's design your photography experience together in the destination of your choice."],
+                    image: "https://plus.unsplash.com/premium_photo-1674389991679-e1a7a0b3e0a7?q=80&w=387&auto=format&fit=crop"
+                }
+            ]}
+            cotizacion={{
+                background: "/images/quote-bg-photo.jpg",
+                title: "Custom Quote – Photography",
+                description: "If your destination is not on our list, tell us the city, beach, or Magical Town of your preference for a personalized quote.",
+                lists: [
+                    {
+                        subtitle: "Logistics Factors",
+                        items: ["Travel and expenses", "Location permits", "Production days", "Number of people"]
+                    }
+                ]
+            }}
+        />
+    );
+}
+
+export default function ExperienciaFotograficaPage() {
+    const locale = useLocale();
+
+    switch (locale) {
+        case "en":
+            return <ExperienciaFotograficaEn />;
+        case "es":
+        default:
+            return <ExperienciaFotograficaPageES />;
+    }
 }

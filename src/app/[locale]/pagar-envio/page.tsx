@@ -3,9 +3,10 @@ import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useCart } from '@/hooks/useCart'; // Importamos el hook
+import { useCart } from '@/hooks/useCart';
 import { CartItem } from '@/interfaces/cart/CartItem';
-import { CheckCircle2, Loader2 } from 'lucide-react';
+import { CheckCircle2, DollarSign, User, Mail, Hash, Sparkles, ArrowRight } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface PaymentFormData {
     nombre: string;
@@ -15,141 +16,153 @@ interface PaymentFormData {
 }
 
 const PaymentForm = () => {
-    const { addItem } = useCart(); // Hook del carrito
+    const t = useTranslations("PaymentPage");
+    const { addItem: addToCart } = useCart();
     const [isAdded, setIsAdded] = useState(false);
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm<PaymentFormData>();
-    const costoBase = watch('costoBase') || 0;
-
-    // Cálculo de IVA (16%)
-    const iva = costoBase * 0.16;
-    const total = Number(costoBase) + iva;
+    
+    const total = watch('costoBase') || 0;
 
     const onSubmit = (data: PaymentFormData) => {
-        // Creamos el objeto CartItem basado en la cotización externa
         const customItem: CartItem = {
             experience_slug: "custom-quote",
-            experience_name: "Experiencia Personalizada",
-            plan_name: `Folio: ${data.folio}`,
-            plan_duration: "A convenir",
-            fecha: new Date().toISOString().split('T')[0], // Fecha actual como referencia
+            experience_name: t("cart_info.experience_name"),
+            plan_name: `${t("cart_info.folio_label")}: ${data.folio}`,
+            plan_duration: t("cart_info.duration"),
+            fecha: new Date().toISOString().split('T')[0],
             personas: 1,
-
-            // Datos específicos de la cotización
             nombre: data.nombre,
             email: data.email,
             cotization_folio: data.folio,
-
-            // El precio es el TOTAL (Subtotal + IVA)
-            price: total
+            price: Number(total)
         };
 
-        addItem(customItem);
+        addToCart(customItem);
         setIsAdded(true);
-
-        // Feedback visual
         setTimeout(() => setIsAdded(false), 3000);
     };
 
     return (
         <>
             <Header />
-            <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4 py-20">
-                <div className="max-w-md w-full bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
-
-                    {/* Encabezado */}
-                    <div className="bg-orange-500 p-6 text-white text-center">
-                        <h2 className="text-2xl font-bold uppercase tracking-tighter">Tu Experiencia Personalizada</h2>
-                        <p className="text-orange-100 text-sm mt-2 font-medium">
-                            Ingresa los datos de tu cotización para proceder al pago seguro.
+            <main className="min-h-screen bg-[#F8FAFA] pt-32 pb-20 px-4">
+                <div className="max-w-xl mx-auto">
+                    
+                    {/* Header del Formulario */}
+                    <div className="text-center mb-10">
+                        <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-400 rounded-3xl mb-6 rotate-3 shadow-lg shadow-orange-200">
+                            <Sparkles className="text-white w-8 h-8" />
+                        </div>
+                        <h1 className="text-4xl md:text-5xl font-black text-gray-900 uppercase tracking-tighter leading-none mb-4">
+                            {t.rich("title", {
+                                span: (chunks) => <span className="text-orange-400">{chunks}</span>
+                            })}
+                        </h1>
+                        <p className="text-gray-500 font-bold max-w-sm mx-auto leading-tight">
+                            {t("subtitle")}
                         </p>
                     </div>
 
-                    <form onSubmit={handleSubmit(onSubmit)} className="p-8 space-y-5">
-
-                        {/* Status Message */}
-                        {isAdded && (
-                            <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg flex items-center gap-3 animate-in fade-in slide-in-from-top-2">
-                                <CheckCircle2 className="w-5 h-5" />
-                                <span className="text-sm font-bold">Cotización agregada al carrito</span>
-                            </div>
-                        )}
-
-                        {/* Nombre */}
-                        <div>
-                            <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Nombre Completo</label>
-                            <input
-                                {...register("nombre", { required: "El nombre es obligatorio" })}
-                                className={`w-full px-4 py-3 bg-gray-50 border rounded-xl focus:ring-4 focus:ring-orange-500/10 outline-none transition-all font-bold ${errors.nombre ? 'border-red-500' : 'border-transparent focus:border-orange-500'}`}
-                                placeholder="Juan Pérez"
-                            />
-                        </div>
-
-                        {/* Email */}
-                        <div>
-                            <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Correo Electrónico</label>
-                            <input
-                                type="email"
-                                {...register("email", { required: "El correo es obligatorio" })}
-                                className={`w-full px-4 py-3 bg-gray-50 border rounded-xl focus:ring-4 focus:ring-orange-500/10 outline-none transition-all font-bold ${errors.email ? 'border-red-500' : 'border-transparent focus:border-orange-500'}`}
-                                placeholder="ejemplo@correo.com"
-                            />
-                        </div>
-
-                        {/* Folio */}
-                        <div>
-                            <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Número de Folio</label>
-                            <input
-                                {...register("folio", { required: "El folio es necesario" })}
-                                className={`w-full px-4 py-3 bg-gray-50 border rounded-xl focus:ring-4 focus:ring-orange-500/10 outline-none transition-all font-bold ${errors.folio ? 'border-red-500' : 'border-transparent focus:border-orange-500'}`}
-                                placeholder="EXP-12345"
-                            />
-                        </div>
-
-                        <hr className="border-gray-100" />
-
-                        {/* Costo y Desglose */}
-                        <div className="bg-orange-50 p-6 rounded-2xl border border-orange-100">
-                            <label className="block text-xs font-black text-orange-800 uppercase tracking-widest mb-2">Costo Acordado (Subtotal)</label>
-                            <div className="relative">
-                                <span className="absolute left-4 top-3.5 text-orange-400 font-bold">$</span>
-                                <input
-                                    type="number"
-                                    step="0.01"
-                                    {...register("costoBase", { required: true, min: 1 })}
-                                    className="w-full pl-8 pr-4 py-3 bg-white border border-orange-200 rounded-xl focus:ring-4 focus:ring-orange-500/20 outline-none font-bold text-gray-900"
-                                    placeholder="0.00"
-                                />
-                            </div>
-
-                            <div className="mt-4 space-y-2 text-sm">
-                                <div className="flex justify-between text-orange-700/70 font-medium">
-                                    <span>IVA (16%):</span>
-                                    <span>${iva.toLocaleString('es-MX', { minimumFractionDigits: 2 })}</span>
+                    <div className="bg-white rounded-[40px] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden">
+                        
+                        <form onSubmit={handleSubmit(onSubmit)} className="p-8 md:p-12 space-y-8">
+                            
+                            <div className="space-y-6">
+                                <div className="relative">
+                                    <label className="flex items-center gap-2 text-[10px] font-black text-gray-400 uppercase tracking-widest ml-4 mb-2">
+                                        <User className="w-3 h-3" /> {t("fields.name.label")}
+                                    </label>
+                                    <input
+                                        {...register("nombre", { required: true })}
+                                        className={`w-full px-6 py-5 bg-gray-50 border-none rounded-[20px] font-bold text-gray-900 outline-none transition-all focus:ring-4 focus:ring-orange-400/10 placeholder:text-gray-300 ${errors.nombre ? 'ring-2 ring-red-500' : ''}`}
+                                        placeholder={t("fields.name.placeholder")}
+                                    />
                                 </div>
-                                <div className="flex justify-between font-black text-gray-900 text-lg border-t border-orange-200 pt-2 mt-2">
-                                    <span>Total:</span>
-                                    <span>${total.toLocaleString('es-MX', { minimumFractionDigits: 2 })}</span>
+
+                                <div className="relative">
+                                    <label className="flex items-center gap-2 text-[10px] font-black text-gray-400 uppercase tracking-widest ml-4 mb-2">
+                                        <Mail className="w-3 h-3" /> {t("fields.email.label")}
+                                    </label>
+                                    <input
+                                        type="email"
+                                        {...register("email", { required: true })}
+                                        className="w-full px-6 py-5 bg-gray-50 border-none rounded-[20px] font-bold text-gray-900 outline-none transition-all focus:ring-4 focus:ring-orange-400/10 placeholder:text-gray-300"
+                                        placeholder={t("fields.email.placeholder")}
+                                    />
+                                </div>
+
+                                <div className="relative">
+                                    <label className="flex items-center gap-2 text-[10px] font-black text-gray-400 uppercase tracking-widest ml-4 mb-2">
+                                        <Hash className="w-3 h-3" /> {t("fields.folio.label")}
+                                    </label>
+                                    <input
+                                        {...register("folio", { required: true })}
+                                        className="w-full px-6 py-5 bg-gray-50 border-none rounded-[20px] font-bold text-gray-900 outline-none transition-all focus:ring-4 focus:ring-orange-400/10 placeholder:text-gray-300"
+                                        placeholder="EXP-XXXXX"
+                                    />
                                 </div>
                             </div>
-                        </div>
 
-                        {/* Botón de Acción */}
-                        <button
-                            type="submit"
-                            disabled={isAdded}
-                            className={`w-full font-black py-4 rounded-xl shadow-lg transition-all transform active:scale-[0.98] uppercase tracking-widest ${isAdded ? 'bg-green-500 text-white' : 'bg-gray-900 hover:bg-orange-600 text-white'
+                            {/* Bloque de Precio */}
+                            <div className="bg-gray-900 rounded-[30px] p-8 text-white relative overflow-hidden group">
+                                <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
+                                    <DollarSign className="w-20 h-20" />
+                                </div>
+                                
+                                <label className="block text-[10px] font-black text-orange-400 uppercase tracking-[0.2em] mb-4">
+                                    {t("fields.amount.label")}
+                                </label>
+                                
+                                <div className="relative flex items-center">
+                                    <span className="text-4xl font-black text-white mr-2">$</span>
+                                    <input
+                                        type="number"
+                                        step="0.01"
+                                        {...register("costoBase", { required: true, min: 1 })}
+                                        className="bg-transparent border-none p-0 text-5xl font-black text-white outline-none w-full placeholder:text-gray-700"
+                                        placeholder="0.00"
+                                    />
+                                </div>
+                                
+                                <p className="mt-4 text-xs font-bold text-gray-400 italic">
+                                    {t("fields.amount.disclaimer")}
+                                </p>
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={isAdded}
+                                className={`w-full py-6 rounded-[24px] font-black uppercase tracking-widest transition-all transform active:scale-95 flex items-center justify-center gap-3 shadow-xl ${
+                                    isAdded 
+                                    ? 'bg-green-500 text-white' 
+                                    : 'bg-orange-400 hover:bg-orange-500 text-white shadow-orange-200'
                                 }`}
-                        >
-                            {isAdded ? 'Agregado al Carrito' : 'Agregar al carrito'}
-                        </button>
+                            >
+                                {isAdded ? (
+                                    <>
+                                        <CheckCircle2 className="w-6 h-6 animate-bounce" />
+                                        {t("buttons.success")}
+                                    </>
+                                ) : (
+                                    <>
+                                        {t("buttons.submit")}
+                                        <ArrowRight className="w-5 h-5" />
+                                    </>
+                                )}
+                            </button>
 
-                        <p className="text-center text-[10px] text-gray-400 uppercase font-bold tracking-widest mt-4">
-                            Pago Seguro vía Keycop Online
-                        </p>
-                    </form>
+                            <div className="flex items-center justify-center gap-4 pt-4">
+                                <div className="h-px flex-1 bg-gray-100" />
+                                <span className="text-[10px] font-black text-gray-300 uppercase tracking-widest">
+                                    {t("secure_payment")}
+                                </span>
+                                <div className="h-px flex-1 bg-gray-100" />
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            </main>
             <Footer />
         </>
     );

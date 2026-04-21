@@ -1,8 +1,9 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ExperiencePage } from "@/components/ExperiencePage";
+import { useLocale } from "next-intl";
 
-export default function Page() {
+function MatrimonioES() {
 
     return (
         <main className="min-h-screen">
@@ -134,4 +135,146 @@ export default function Page() {
             />
         </main>
     );
+}
+
+function MatrimonioEn() {
+    return (
+        <ExperiencePage
+            heroImage="https://images.unsplash.com/photo-1591604466107-ec97de577aff?q=80&w=871&auto=format&fit=crop"
+            title="Marriage Proposal Experience"
+            subtitle="We design unique, romantic, and perfectly coordinated proposals to make that 'yes' unforgettable"
+            description="We take care of strategic planning, logistics, decoration, and visual production, attending to every detail so you can focus solely on the moment. Available in various cities, beaches, Magical Towns, and special destinations throughout Mexico."
+            slug="marriage-proposal-experience"
+            infoLists={[
+                {
+                    title: "Available Destinations",
+                    items: [
+                        "Mexico City",
+                        "San Miguel de Allende",
+                        "Valle de Bravo",
+                        "Tulum",
+                        "Cancun",
+                        "Los Cabos",
+                        "Puerto Vallarta",
+                        "Queretaro",
+                    ],
+                    icon: "map",
+                    isOpen: true
+                }
+            ]}
+            plans={[
+                {
+                    color: "#f5d42c",
+                    description: "Ideal for an intimate proposal with careful production.",
+                    name: "Essential Proposal",
+                    price: 20600,
+                    features: [],
+                    includes: [
+                        "Personalized planning and advice",
+                        "Themed romantic decoration",
+                        "Ambient LED lighting",
+                        "Day-of-event coordination",
+                        "Professional photographer (2 hours)",
+                        "10 edited photographs",
+                    ],
+                    notIncludes: [
+                        "Transportation outside the city",
+                        "Professional videographer (MXN $5,000)",
+                        "Drone (MXN $2,500)",
+                        "Accommodation if applicable",
+                    ],
+                    duration: "4-hour experience with up to 2 weeks of planning",
+                    slug: "matrimonio-essential",
+                    backgroundImage: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=870&auto=format&fit=crop"
+                },
+                {
+                    color: "#f5d42c",
+                    description: "Higher visual production and full coverage of the moment.",
+                    name: "Signature Proposal",
+                    price: 28900,
+                    includes: [
+                        "Custom creative concept (prior moodboard)",
+                        "Enhanced romantic decor (natural flowers, decorative candles, custom signage)",
+                        "Special lighting",
+                        "Strategic surprise coordination",
+                        "Professional photographer (2 hours)",
+                        "16 edited photographs",
+                        "Highlight video (1 minute)",
+                        "Full assistance during the event",
+                    ],
+                    notIncludes: [
+                        "Transportation and accommodation outside the city",
+                        "Drone (additional quote if required)",
+                    ],
+                    duration: "4-hour experience with personalized planning",
+                    features: [],
+                    slug: "matrimonio-signature",
+                    backgroundImage: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=870&auto=format&fit=crop"
+                },
+                {
+                    color: "#f5d42c",
+                    description: "Designed for special destinations and high-impact productions.",
+                    name: "Luxury Experience",
+                    duration: "Custom experience (up to 5 hours) with extended strategic planning",
+                    includes: [
+                        "Full conceptual design",
+                        "Abundant premium decoration (high-end floral, scenic lighting, special setup)",
+                        "Integral surprise coordination",
+                        "Professional photographer (4 hours)",
+                        "Professional videographer",
+                        "Edited cinematic video",
+                        "Aerial drone footage",
+                        "Full logistics assistance",
+                        "Coordination with hotel or venue",
+                    ],
+                    notIncludes: [
+                        "Transportation and accommodation at destination (if applicable)"
+                    ],
+                    price: 45000,
+                    features: [],
+                    slug: "matrimonio-luxury",
+                    backgroundImage: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=870&auto=format&fit=crop"
+                }
+            ]}
+            cotizacion={{
+                background: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=870&auto=format&fit=crop",
+                title: "Custom Quote – Proposals",
+                description: "If the destination where you wish to propose is not on our list, let us know the specific city, hotel, or location to send you a personalized quote considering logistics, production, and permits. We can design your proposal in different parts of Mexico:",
+                lists: [
+                    {
+                        subtitle: "We can design your proposal in various parts of Mexico:",
+                        items: [
+                            "Beaches",
+                            "Cities with rooftops",
+                            "Magical Towns",
+                            "Boat trips",
+                            "Private gardens",
+                        ]
+                    },
+                    {
+                        subtitle: "The final quote may vary according to:",
+                        items: [
+                            "Destination",
+                            "Floral production level",
+                            "Audiovisual coverage",
+                            "Venue or accommodation",
+                            "Transportation logistics",
+                        ]
+                    }
+                ]
+            }}
+        />
+    );
+}
+
+export default function MatrimonioPage() {
+    const locale = useLocale();
+
+    switch (locale) {
+        case "en":
+            return <MatrimonioEn />;
+        case "es":
+        default:
+            return <MatrimonioES />;
+    }
 }

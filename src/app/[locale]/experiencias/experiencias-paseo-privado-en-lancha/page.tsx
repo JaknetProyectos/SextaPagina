@@ -1,6 +1,7 @@
 import { ExperiencePage } from "@/components/ExperiencePage";
+import { useLocale } from "next-intl";
 
-export default function PaseoPrivadoLanchaPage() {
+function PaseoPrivadoLanchaES() {
     return (
         <ExperiencePage
             title="Experiencias Paseo Privado en Lancha"
@@ -138,4 +139,154 @@ Creamos experiencias privadas en lancha para parejas, aniversarios, propuestas o
             }}
         />
     );
+}
+
+function PaseoPrivadoLanchaEN() {
+    return (
+        <ExperiencePage
+            title="Private Boat Trip Experiences"
+            subtitle="Live an intimate moment sailing in a spectacular natural environment"
+            heroImage="/images/lancha-hero.jpg"
+            image2="/images/lancha-bg-section.jpg"
+            idealSectionTitle="Ideal for:"
+            description={`Live an intimate moment sailing in a spectacular natural environment.
+      
+We create private boat experiences for couples, anniversaries, proposals, or special celebrations in lakes and canals within various cities and destinations in Mexico. Each experience is designed for you to enjoy privacy, safety, and a carefully planned romantic atmosphere.`}
+
+            infoLists={[
+                {
+                    title: "Lakes and Reservoirs",
+                    icon: "map",
+                    isOpen: true,
+                    items: [
+                        "Valle de Bravo",
+                        "Tequesquitengo",
+                        "Chapala",
+                    ]
+                },
+                {
+                    title: "Canals",
+                    icon: "star",
+                    items: [
+                        "Xochimilco"
+                    ]
+                },
+                {
+                    title: "Sea",
+                    icon: "star",
+                    items: [
+                        "Cancun",
+                        "Los Cabos",
+                        "Puerto Vallarta",
+                    ]
+                }
+            ]}
+
+            plans={[
+                {
+                    slug: "paseo-esencial",
+                    name: "Essential Private Trip",
+                    price: 3600,
+                    color: "#3B9FD8",
+                    backgroundImage: "/images/lancha-esencial.jpg",
+                    duration: "2 hours of sailing",
+                    description: "A simple romantic experience, ideal for disconnecting and enjoying the scenery.",
+                    features: ["Private Sailing", "Welcome Drink", "Ambient Music"],
+                    includes: [
+                        "Private boat with certified skipper",
+                        "Passenger insurance",
+                        "Basic snacks and drinks (water, sodas)",
+                        "5 candid photographs",
+                        "Prior coordination of schedule and departure point",
+                    ],
+                    notIncludes: [
+                        "Transportation to the pier (MXN $500 – $1,000 depending on location)",
+                        "Dinner on board",
+                        "Special decoration",
+                    ]
+                },
+                {
+                    slug: "paseo-signature",
+                    name: "Signature Private Trip",
+                    price: 7600,
+                    color: "#273449",
+                    backgroundImage: "/images/lancha-signature.jpg",
+                    duration: "2 hours of sailing plus pier access coordination",
+                    description: "Our balanced experience that includes preferential access coordination and details that elevate the moment.",
+                    features: ["Access Coordination", "Snack Platter", "Sparkling Wine"],
+                    includes: [
+                        "Private boat with skipper",
+                        "Passenger insurance",
+                        "Gourmet snacks",
+                        "Drinks (water, sodas, and sparkling wine)",
+                        "10 edited candid photographs",
+                        "Prior planning assistance",
+                        "Custom playlist during the tour",
+                    ],
+                    notIncludes: [
+                        "Transportation to the pier (MXN $500 – $1,000)",
+                        "Dinner on board (MXN $1,500)",
+                        "Special decoration (MXN $800)",
+                    ]
+                },
+                {
+                    slug: "paseo-luxury",
+                    name: "Luxury Private Experience",
+                    price: 14500,
+                    color: "#0077B6",
+                    backgroundImage: "/images/lancha-luxury.jpg",
+                    duration: "3 hours of private sailing plus personalized prior coordination",
+                    description: "Designed for marriage proposals or life milestones. Includes high-level visual production and logistics.",
+                    features: ["Ideal for Proposals", "Premium Decoration", "VIP Toast"],
+                    includes: [
+                        "Premium private boat with certified skipper",
+                        "Passenger insurance",
+                        "Full romantic decoration (natural flowers, LED candles, custom sign)",
+                        "Gourmet dinner on board for 2 people",
+                        "Premium wine bottle or special mixology",
+                        "Cheese board and handcrafted desserts",
+                        "Professional photographer for 2 hours",
+                        "40 high-resolution edited photographs",
+                        "Cinematic highlight video (1 minute)",
+                        "Surprise coordination (if it is a marriage proposal)",
+                    ],
+                    notIncludes: [
+                        "Transportation to the pier (quote according to city)",
+                        "Overtime extension (cost per additional hour)",
+                    ]
+                }
+            ]}
+
+            cotizacion={{
+                background: "/images/quote-lancha.jpg",
+                title: "Custom Quote",
+                description: "We can carry out this experience in different lakes and destinations within Mexico, adapting to the environment and the production level you desire. If your preferred destination is not on the list, let us know the specific city or marina to validate availability and send you a personalized quote.",
+                lists: [
+                    {
+                        subtitle: "We can also integrate:",
+                        items: [
+                            "Live Mariachi or saxophonist",
+                            "Cold sparks for proposal",
+                            "Professional drone",
+                            "Special themed decoration",
+                            "Executive private transportation",
+                            "Sailing extension",
+                        ],
+                    }
+                ]
+            }}
+        />
+    );
+}
+
+export default function PaseoPrivadoLanchaPage() {
+    const locale = useLocale();
+
+    switch (locale) {
+        case "en":
+            return <PaseoPrivadoLanchaEN />;
+        case "es":
+        default:
+            return <PaseoPrivadoLanchaES />;
+    }
 }

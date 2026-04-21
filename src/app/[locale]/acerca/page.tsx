@@ -6,34 +6,21 @@ import { ArrowUpRight, MapPin, Calendar, PlusCircle, Truck, Sparkles } from "luc
 import { Link } from "@/i18n/routing";
 import { CustomQuoteSection } from "@/components/CustomQuoteSection";
 import { PagarCotizacion } from "@/components/PagarCotizacion";
+import { useTranslations } from "next-intl";
 
 export default function AcercaPage() {
-  const ciudades = [
-    "CDMX", "Guadalajara", "Monterrey", "Cancún", "Riviera Maya",
-    "Puerto Vallarta", "Los Cabos", "San Miguel de Allende", "Valle de Bravo",
-    "Xochimilco", "Querétaro", "León", "Puebla", "Toluca", "Tijuana",
-    "Mazatlán", "Oaxaca", "Mérida", "Cozumel", "Villahermosa",
-    "Acapulco", "Chihuahua", "Morelia", "Aguascalientes", "San Luis Potosí",
-    "Culiacán", "Durango", "Zacatecas", "Tepic", "Ensenada"
-  ];
+  const t = useTranslations("AboutPage");
 
-  const extrasOpcionales = [
-    "Video profesional",
-    "Maquilladores y estilistas",
-    "Músicos en vivo",
-    "Toma aérea con dron",
-    "Chef en vivo",
-    "Postres o menú adicional",
-    "Decoración especial temática",
-    "Transporte privado",
-    "Extensión de tiempo"
-  ];
+  // Recuperamos los arrays desde el JSON
+  const ciudades = t.raw("coverage.city_list") as string[];
+  const extrasOpcionales = t.raw("extras.items") as string[];
+  const transporteDetalles = t.raw("logistics.details") as string[];
 
   return (
     <main className="min-h-screen bg-white">
       <Header />
 
-      {/* Hero Section - Estilo Bloque Sólido */}
+      {/* Hero Section */}
       <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img 
@@ -45,7 +32,7 @@ export default function AcercaPage() {
         </div>
         <div className="relative z-10 bg-white px-10 py-6 rounded-[30px] text-center shadow-none">
           <h1 className="text-4xl md:text-6xl font-black text-gray-900 uppercase">
-            Acerca de nosotros
+            {t("hero.title")}
           </h1>
         </div>
       </section>
@@ -67,13 +54,13 @@ export default function AcercaPage() {
 
             <div className="space-y-8">
               <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight">
-                Cobertura y <br />
-                <span className="text-orange-400">Condiciones Generales</span>
+                {t.rich("coverage.title", {
+                  br: () => <br />,
+                  span: (chunks) => <span className="text-orange-400">{chunks}</span>
+                })}
               </h2>
               <p className="text-gray-600 text-lg font-medium leading-relaxed">
-                Nuestros servicios están disponibles en distintas ciudades y destinos
-                dentro de México. La disponibilidad, logística y costos adicionales pueden
-                variar según el tipo de experiencia y el plan seleccionado.
+                {t("coverage.description")}
               </p>
 
               <div className="bg-gray-50 rounded-[32px] p-8">
@@ -82,27 +69,25 @@ export default function AcercaPage() {
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-2xl font-black text-gray-900">
-                    Ciudades Disponibles
+                    {t("coverage.list_title")}
                   </h3>
                 </div>
                 <p className="text-gray-700 font-bold leading-relaxed text-sm">
-                  Operamos en: {ciudades.join(" • ")}.
+                  {t("coverage.operating_in")}: {ciudades.join(" • ")}.
                 </p>
               </div>
 
               {/* Personalize Box */}
               <div className="bg-green-50 rounded-[32px] p-8 border-none">
                 <h3 className="text-2xl font-black text-gray-900 mb-4">
-                  Personaliza tu experiencia
+                  {t("coverage.personalize.title")}
                 </h3>
                 <p className="text-gray-600 font-medium mb-6 leading-relaxed">
-                  Si deseas realizar tu experiencia en una ciudad o destino que no se encuentre
-                  en esta lista, contáctanos para elaborar una cotización personalizada según
-                  ubicación y logística requerida.
+                  {t("coverage.personalize.description")}
                 </p>
                 <Link href="/contacto">
                   <button className="inline-flex items-center gap-3 bg-gray-900 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-orange-400 transition-all group">
-                    CONTÁCTANOS
+                    {t("coverage.personalize.button")}
                     <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </button>
                 </Link>
@@ -112,7 +97,7 @@ export default function AcercaPage() {
         </div>
       </section>
 
-      {/* Quote Section - Impacto Visual */}
+      {/* Quote Section */}
       <section className="py-24 bg-green-400">
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-10">
@@ -125,12 +110,12 @@ export default function AcercaPage() {
             </div>
           </div>
           <p className="text-2xl md:text-4xl font-black text-white max-w-5xl mx-auto leading-tight italic">
-            "Cada experiencia puede ajustarse y escalarse según el nivel de producción que desees."
+            "{t("quote")}"
           </p>
         </div>
       </section>
 
-      {/* Info Cards Section - Información Completa */}
+      {/* Info Cards Section */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-10">
@@ -139,14 +124,12 @@ export default function AcercaPage() {
               <div className="bg-white p-6 rounded-[30px] mb-8 shadow-sm">
                 <Calendar className="w-12 h-12 text-green-400" />
               </div>
-              <h3 className="text-2xl font-black text-gray-900 mb-6">Reservaciones</h3>
+              <h3 className="text-2xl font-black text-gray-900 mb-6">{t("reservations.title")}</h3>
               <p className="text-gray-600 font-bold mb-6">
-                Recomendamos realizar tu reservación con mínimo una semana de anticipación.
+                {t("reservations.subtitle")}
               </p>
               <p className="text-gray-500 text-sm leading-relaxed">
-                En experiencias premium, destinos especiales o temporadas altas, se sugiere
-                reservar con mayor tiempo para garantizar disponibilidad de locaciones,
-                proveedores y producción.
+                {t("reservations.description")}
               </p>
             </div>
 
@@ -155,10 +138,9 @@ export default function AcercaPage() {
               <div className="bg-orange-400 p-4 rounded-2xl w-fit mb-8 self-center">
                 <PlusCircle className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-2xl font-black text-gray-900 mb-6 text-center">Extras Opcionales</h3>
+              <h3 className="text-2xl font-black text-gray-900 mb-6 text-center">{t("extras.title")}</h3>
               <p className="text-gray-600 font-bold mb-6 text-sm text-center">
-                Dependiendo del servicio y plan contratado, puedes agregar elementos
-                adicionales con cotización personalizada, como:
+                {t("extras.subtitle")}
               </p>
               <ul className="space-y-3">
                 {extrasOpcionales.map((extra) => (
@@ -175,17 +157,12 @@ export default function AcercaPage() {
               <div className="bg-white p-6 rounded-[30px] mb-8 shadow-sm w-fit self-center">
                 <Truck className="w-12 h-12 text-green-400" />
               </div>
-              <h3 className="text-2xl font-black text-gray-900 mb-6 text-center">Transporte y Logística</h3>
+              <h3 className="text-2xl font-black text-gray-900 mb-6 text-center">{t("logistics.title")}</h3>
               <p className="text-gray-600 font-bold mb-4 text-center">
-                El costo de transporte se cotiza de manera independiente y puede variar según:
+                {t("logistics.subtitle")}
               </p>
               <ul className="space-y-4 mb-8">
-                {[
-                  "Ciudad base del equipo",
-                  "Distancia al destino",
-                  "Tipo de experiencia contratada",
-                  "Nivel de producción requerido"
-                ].map((item) => (
+                {transporteDetalles.map((item) => (
                   <li key={item} className="bg-white p-3 rounded-2xl text-xs font-black text-gray-500 flex items-center gap-3">
                     <div className="w-2 h-2 bg-green-400 rounded-full" />
                     {item}
@@ -193,49 +170,39 @@ export default function AcercaPage() {
                 ))}
               </ul>
               <p className="text-gray-400 text-xs text-center leading-relaxed mt-auto">
-                Para experiencias fuera de la ciudad base, puede aplicarse costo adicional
-                por traslado, hospedaje y logística operativa.
+                {t("logistics.footer")}
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Custom Quote Section con Data Original */}
-      <CustomQuoteSection  visibleFields={{
-        date: true,
-        email: true,
-        groupType: true,
-        location: true,
-        message: true,
-        name: true
-      }} data={{
-        title: "Cotización Personalizada",
-        description: "",
-        lists: [
-          {
-            subtitle: "Podemos realizar esta experiencia en:",
-            items: [
-              "Hoteles boutique",
-              "Villas privadas en playa",
-              "Cabañas románticas",
-              "Suites ejecutivas",
-              "Destinos especiales dentro de México"
-            ]
-          },
-          {
-            subtitle: "La inversión final dependerá de:",
-            items: [
-              "Ciudad o destino",
-              "Nivel de producción",
-              "Políticas del hotel",
-              "Cobertura audiovisual",
-              "Logística de traslado"
-            ]
-          }
-        ],
-        background: "",
-      }} />
+      {/* Custom Quote Section */}
+      <CustomQuoteSection  
+        visibleFields={{
+          date: true,
+          email: true,
+          groupType: true,
+          location: true,
+          message: true,
+          name: true
+        }} 
+        data={{
+          title: t("custom_quote.title"),
+          description: "",
+          lists: [
+            {
+              subtitle: t("custom_quote.locations_subtitle"),
+              items: t.raw("custom_quote.locations_items") as string[]
+            },
+            {
+              subtitle: t("custom_quote.investment_subtitle"),
+              items: t.raw("custom_quote.investment_items") as string[]
+            }
+          ],
+          background: "",
+        }} 
+      />
 
       <div className="py-20">
         <PagarCotizacion/>

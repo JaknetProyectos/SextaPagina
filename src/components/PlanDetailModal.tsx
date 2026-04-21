@@ -16,9 +16,9 @@ import {
   CalendarDays
 } from "lucide-react";
 import { PagarCotizacion } from "./PagarCotizacion";
-// 1. Importamos el hook y la interfaz
 import { useCart } from "@/hooks/useCart";
 import { CartItem } from "@/interfaces/cart/CartItem";
+import { useLocale, useTranslations } from "next-intl";
 
 interface Plan {
   slug: string;
@@ -27,7 +27,7 @@ interface Plan {
   description: string;
   backgroundImage: string;
   color: string;
-  features: string[];
+  features?: string[];
   duration?: string;
   includes?: string[];
   notIncludes?: string[];
@@ -40,22 +40,22 @@ interface ExperienceDetails {
 
 interface PlanDetailModalProps {
   plan: Plan;
-  exp: ExperienceDetails,
+  exp: ExperienceDetails;
   onClose: () => void;
 }
 
 export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) => {
-  // 2. Inicializamos el hook del carrito
+  const t = useTranslations("PlanDetailModal");
+  const locale = useLocale();
   const { addItem } = useCart();
 
   const [pax, setPax] = useState(2);
   const [fecha, setFecha] = useState("");
   const [added, setAdded] = useState(false);
 
-  // 3. Función para manejar la adición al carrito
   const handleAddToCart = () => {
     if (!fecha) {
-      alert("Por favor selecciona una fecha para tu experiencia.");
+      alert(t("alerts.select_date"));
       return;
     }
 
@@ -63,7 +63,7 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
       experience_slug: exp.slug,
       experience_name: exp.name,
       plan_name: plan.name,
-      plan_duration: plan.duration || "Consultar",
+      plan_duration: plan.duration || t("defaults.to_be_consulted"),
       fecha: fecha,
       personas: pax,
       price: plan.price,
@@ -72,7 +72,6 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
     addItem(newItem);
     setAdded(true);
 
-    // Opcional: Feedback visual y cerrar después de un delay
     setTimeout(() => {
       setAdded(false);
       onClose();
@@ -83,6 +82,7 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
     <div className="fixed inset-0 z-[100] bg-white overflow-y-auto animate-in fade-in duration-300">
       <Header />
 
+      {/* Hero Section */}
       <div className="relative h-[50vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-700 scale-105"
@@ -103,7 +103,12 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
             {plan.name}
           </h2>
           <div className="inline-block bg-green-400 text-white px-6 py-2 rounded-xl text-xl md:text-2xl font-black tracking-tighter uppercase">
-            MXN ${new Intl.NumberFormat('es-MX').format(plan.price)} <span className="text-sm opacity-80"> IVA Incluido</span>
+            {new Intl.NumberFormat(locale === 'es' ? 'es-MX' : 'en-US', {
+              style: 'currency',
+              currency: 'MXN',
+              maximumFractionDigits: 0
+            }).format(plan.price)} 
+            <span className="text-sm opacity-80 ml-2"> {t("tax_included")}</span>
           </div>
         </div>
       </div>
@@ -112,11 +117,12 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
         <div className="grid lg:grid-cols-3 gap-16 items-start">
 
           <div className="lg:col-span-2 space-y-20">
+            {/* Descripción */}
             <section className="max-w-3xl">
               <div className="flex items-center gap-4 mb-6">
                 <div className="bg-orange-400 w-12 h-2 rounded-full" />
                 <h3 className="text-3xl font-black text-gray-900 uppercase tracking-tighter">
-                  Descripción del plan
+                  {t("sections.description")}
                 </h3>
               </div>
               <p className="text-gray-600 font-medium leading-relaxed text-xl whitespace-pre-line mb-10">
@@ -124,17 +130,18 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
               </p>
               <div className="inline-flex items-center gap-4 bg-gray-900 text-white px-8 py-4 rounded-[20px] font-black uppercase text-sm tracking-widest">
                 <Clock className="w-6 h-6 text-green-400" />
-                DURACIÓN ESTIMADA: {plan.duration || "CONSULTAR"}
+                {t("estimated_duration")}: {plan.duration || t("defaults.to_be_consulted")}
               </div>
             </section>
 
+            {/* Incluye / No incluye */}
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-green-50 rounded-[40px] p-10 border-none">
                 <div className="bg-green-400 w-fit p-3 rounded-2xl mb-6">
                   <CheckCircle2 className="w-8 h-8 text-white" />
                 </div>
                 <h4 className="text-2xl font-black text-gray-900 mb-6 uppercase tracking-tighter">
-                  Lo que incluye
+                  {t("sections.includes")}
                 </h4>
                 <ul className="space-y-4">
                   {plan.includes?.map((item, i) => (
@@ -151,7 +158,7 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
                   <ShieldAlert className="w-8 h-8 text-white" />
                 </div>
                 <h4 className="text-2xl font-black text-gray-900 mb-6 uppercase tracking-tighter">
-                  No incluye
+                  {t("sections.not_includes")}
                 </h4>
                 <ul className="space-y-4">
                   {plan.notIncludes?.map((item, i) => (
@@ -164,14 +171,15 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
               </div>
             </div>
 
+            {/* Configuración / Formulario */}
             <div className="bg-gray-50 rounded-[40px] p-10 md:p-14 border-none">
               <h3 className="text-3xl font-black text-gray-900 mb-10 uppercase tracking-tighter">
-                Configura tu experiencia
+                {t("sections.config")}
               </h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-end">
                 <div className="space-y-3">
                   <label className="flex items-center gap-2 text-xs font-black text-gray-400 uppercase tracking-[0.2em] ml-2">
-                    <CalendarDays className="w-4 h-4" /> Fecha deseada
+                    <CalendarDays className="w-4 h-4" /> {t("form.date_label")}
                   </label>
                   <input
                     type="date"
@@ -183,7 +191,7 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
 
                 <div className="space-y-3">
                   <label className="text-xs font-black text-gray-400 uppercase tracking-[0.2em] ml-2">
-                    Nivel de personas (PAX)
+                    {t("form.pax_label")}
                   </label>
                   <div className="flex items-center bg-white rounded-2xl p-2 h-[64px]">
                     <button
@@ -205,32 +213,34 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
                 <button
                   onClick={handleAddToCart}
                   disabled={added}
-                  className={`h-[64px] rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-4 transition-all group ${added ? 'bg-green-500 text-white' : 'bg-gray-900 text-white hover:bg-green-400'
-                    }`}
+                  className={`h-[64px] rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-4 transition-all group ${
+                    added ? 'bg-green-500 text-white' : 'bg-gray-900 text-white hover:bg-green-400'
+                  }`}
                 >
                   {added ? (
                     <CheckCircle2 className="w-6 h-6 animate-bounce" />
                   ) : (
                     <ShoppingCart className="w-6 h-6 group-hover:scale-110 transition-transform" />
                   )}
-                  {added ? "AGREGADO" : "RESERVAR AHORA"}
+                  {added ? t("form.button_added") : t("form.button_reserve")}
                 </button>
               </div>
             </div>
           </div>
 
+          {/* Sidebar Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-32 bg-gray-900 rounded-[40px] p-12 text-white text-center border-none">
               <div className="w-20 h-20 bg-green-400 rounded-[24px] flex items-center justify-center mx-auto mb-8 -rotate-6">
                 <Star className="w-10 h-10 text-white" fill="white" />
               </div>
-              <h3 className="text-4xl font-black uppercase tracking-tighter mb-6">Visionario</h3>
+              <h3 className="text-4xl font-black uppercase tracking-tighter mb-6">{t("sidebar.title")}</h3>
               <p className="text-gray-400 font-bold mb-10 text-lg leading-relaxed">
-                ¿Buscas un destino fuera de la lista? Diseñamos tu experiencia desde cero con logística personalizada.
+                {t("sidebar.description")}
               </p>
               <button className="w-full bg-white text-gray-900 py-6 rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-orange-400 hover:text-white transition-all group">
                 <MessageCircle className="w-6 h-6 group-hover:animate-pulse" />
-                HABLEMOS
+                {t("sidebar.button")}
               </button>
             </div>
           </div>

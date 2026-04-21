@@ -22,7 +22,7 @@ export async function POST(req: Request) {
 
     // 1. EMAIL PARA EL CLIENTE
     await resend.emails.send({
-      from: "Odyssey México <informacion@odysseymexico.com>",
+      from: "Turivana <contacto@turivana.com>",
       to: email,
       subject: `Confirmación de Solicitud - ${nombre}`,
       html: `
@@ -54,7 +54,7 @@ export async function POST(req: Request) {
     <body>
       <div class="wrapper">
         <div class="card">
-          <div class="header"><p class="logo">Odyssey México</p></div>
+          <div class="header"><p class="logo">Turivana</p></div>
           <div class="content">
             <div class="status-badge">Recibida</div>
             <h1 class="title">Hola, ${nombre}</h1>
@@ -74,7 +74,7 @@ export async function POST(req: Request) {
             </div>
           </div>
           <div class="footer">
-            <p class="footer-text"><strong>Odyssey México</strong><br>Luxury & Travel Services</p>
+            <p class="footer-text"><strong>Turivana</strong><br>Luxury & Travel Services</p>
           </div>
         </div>
       </div>
@@ -84,8 +84,8 @@ export async function POST(req: Request) {
 
     // 2. EMAIL PARA EL ADMIN
     await resend.emails.send({
-      from: "Odyssey System <informacion@odysseymexico.com>",
-      to: "informacion@odysseymexico.com",
+      from: "Turivana <contacto@turivana.com>",
+      to: "contacto@turivana.com",
       subject: `🚨 LEAD: ${nombre} - ${destino || 'Consulta'}`,
       html: `
       <div style="background: #f4f7f7; padding: 40px 20px; font-family: sans-serif;">

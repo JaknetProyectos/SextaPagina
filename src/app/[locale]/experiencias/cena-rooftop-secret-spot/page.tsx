@@ -1,6 +1,7 @@
 import { ExperiencePage } from "@/components/ExperiencePage";
+import { useLocale } from "next-intl";
 
-export default function CenaRooftopPage() {
+function CenaRooftopES() {
     return (
         <ExperiencePage
             title="Cena Rooftop “Secret Spot”"
@@ -140,4 +141,142 @@ Disponible en ciudades con rooftops privados o vistas panorámicas.`}
             }}
         />
     );
+}
+
+function CenaRooftopEn() {
+    return (
+        <ExperiencePage
+            title="“Secret Spot” Rooftop Dinner"
+            subtitle="A private experience on an exclusive rooftop with panoramic views"
+            heroImage="/images/rooftop-hero.jpg"
+            image2="/images/rooftop-view-bg.jpg"
+            idealSectionTitle="Ideal for:"
+            description={`Designed for intimate moments, marriage proposals, or special celebrations.
+      
+We create an elegant and romantic atmosphere in selected rooftops across various cities in Mexico, taking care of every detail: lighting, setup, menu, and ambiance.
+
+Available in cities with private rooftops or panoramic views.`}
+            infoLists={[
+                {
+                    title: "Available Cities",
+                    icon: "map",
+                    isOpen: true,
+                    items: [
+                        "Mexico City",
+                        "Guadalajara",
+                        "Monterrey",
+                        "Puebla",
+                        "Queretaro",
+                        "Merida",
+                        "Cancun (ocean view)",
+                        "San Miguel de Allende",
+                    ]
+                }
+            ]}
+            plans={[
+        {
+            slug: "rooftop-essential",
+            name: "Rooftop Experience Essential",
+            price: 24400,
+            color: "#273449",
+            backgroundImage: "/images/rooftop-plan-essential.jpg",
+            duration: "3 hours of dinner plus setup",
+            description: "An intimate dinner with a privileged view and careful production.",
+            includes: [
+                "Private rooftop rental (subject to availability)",
+                "Personalized 3-course gourmet menu",
+                "Waiter service during the experience",
+                "Romantic decor (LED candles, simple natural flowers, elegant table setup)",
+                "Pre-event coordination",
+            ],
+            notIncludes: [
+                "Rooftop transportation (MXN $500 – $1,200 depending on location)",
+                "Live music (MXN $1,800)",
+                "Professional photography (MXN $2,500)",
+            ]
+        },
+        {
+            slug: "rooftop-signature",
+            name: "Rooftop Experience Signature",
+            price: 40200,
+            color: "#3B9FD8",
+            backgroundImage: "/images/rooftop-plan-signature.jpg",
+            duration: "3 hours of private dinner with custom setup",
+            description: "Higher production, more detail, and a more striking atmosphere.",
+            includes: [
+                "Exclusive rooftop with panoramic view",
+                "Private Chef",
+                "Premium 3-course gourmet menu",
+                "Dedicated waiter",
+                "Enhanced romantic decor (elaborate floral centerpieces, ambient lighting)",
+                "Premium wine bottle or custom mixology",
+                "Cheese board or signature dessert",
+                "Custom ambient music",
+                "10 edited professional photos",
+                "Full event coordination",
+            ],
+            notIncludes: [
+                "Rooftop transportation",
+                "Additional live musician",
+            ]
+        },
+        {
+            slug: "rooftop-luxury",
+            name: "Rooftop Experience Luxury Proposal",
+            price: 60100,
+            color: "#F4845F",
+            backgroundImage: "/images/rooftop-plan-luxury.jpg",
+            duration: "4 total hours (includes special setup and private experience)",
+            description: "Designed for proposals or celebrations requiring full production.",
+            includes: [
+                "Premium rooftop with privileged view",
+                "Conceptual design (personalized moodboard)",
+                "Private Chef with 4-course tasting menu",
+                "Exclusive waiter during the entire event",
+                "High-level romantic decor (abundant floral arrangements, custom signage)",
+                "Live music (saxophone, violin, or guitar)",
+                "Professional photographer for 2 hours (40 photos)",
+                "Cinematic highlight video",
+                "Surprise proposal coordination",
+            ],
+            notIncludes: [
+                "Executive private transportation",
+                "Overtime extension",
+            ]
+        }
+    ]}
+
+    cotizacion = {{
+        background: "/images/quote-rooftop.jpg",
+            title: "Custom Quote – Rooftop",
+                description: "Every city, rooftop, and production level is different. We can design this experience specifically for your needs.",
+                    lists: [
+                        {
+                            subtitle: "Factors to consider:",
+                            items: [
+                                "View type (skyline, historic center, ocean)",
+                                "Number of guests",
+                                "Menu type",
+                                "Musical atmosphere",
+                                "Floral and decorative production level"
+                            ]
+                        }
+                    ]
+    }
+}
+    />
+  );
+}
+
+
+export default function CenaRooftopPage() {
+  const locale = useLocale();
+
+  switch (locale) {
+    case "en":
+      return <CenaRooftopEn />;
+    case "es":
+    default:
+      return <CenaRooftopES />;
+  }
 }

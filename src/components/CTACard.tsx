@@ -2,8 +2,11 @@
 
 import { Link } from "@/i18n/routing";
 import { ArrowUpRight, Heart, Star, Plane } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export function CTACard() {
+  const t = useTranslations("CTACard");
+
   return (
     <section className="py-20 bg-[#1e232f]">
       <div className="container mx-auto px-4">
@@ -24,22 +27,24 @@ export function CTACard() {
 
           <div className="text-center">
             <p className="text-gray-600 text-xl mb-3 font-bold uppercase tracking-wider">
-              Momentos que duran para siempre
+              {t("top_text")}
             </p>
             <h2 className="text-4xl md:text-5xl font-black mb-10 text-gray-900 leading-tight">
-              Viaja a tu <span className="text-orange-400">destino</span> soñado
+              {t.rich("title", {
+                span: (chunks) => <span className="text-orange-400">{chunks}</span>
+              })}
             </h2>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link href={"/experiencias"}>
                 <button className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gray-900 text-white px-10 py-4 rounded-2xl font-black text-lg hover:bg-orange-400 transition-all group">
-                  Experiencias
+                  {t("buttons.experiences")}
                   <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </button>
               </Link>
               <Link href={"/acerca"}>
                 <button className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-orange-400 text-white px-10 py-4 rounded-2xl font-black text-lg hover:bg-green-400 transition-all group">
-                  Nuestros Servicios
+                  {t("buttons.services")}
                   <ArrowUpRight className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </button>
               </Link>

@@ -30,7 +30,7 @@ export const getTicketEmailHTML = (orderData: any) => {
     <body>
       <div class="ticket">
         <div class="header">
-          <h1 style="margin: 0; font-size: 24px; letter-spacing: -1px; text-transform: uppercase; font-weight: 900;">ODYSSEY <span style="color: #fb923c;">LIVE</span></h1>
+          <h1 style="margin: 0; font-size: 24px; letter-spacing: -1px; text-transform: uppercase; font-weight: 900;">TURIVANA</h1>
           <p style="margin: 10px 0 0; font-size: 12px; color: #9ca3af; font-weight: bold; letter-spacing: 2px;">CONFIRMACIÓN DE RESERVA</p>
         </div>
         
@@ -56,7 +56,7 @@ export const getTicketEmailHTML = (orderData: any) => {
 
         <div class="footer">
           <p>ESTO ES UN COMPROBANTE DE PAGO SEGURO VIA KEYCOP</p>
-          <p style="margin-top: 10px;">ODYSSEY MÉXICO &copy; 2026</p>
+          <p style="margin-top: 10px;">TURIVANA &copy; 2026</p>
         </div>
       </div>
     </body>

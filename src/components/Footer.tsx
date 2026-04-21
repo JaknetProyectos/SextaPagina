@@ -3,8 +3,11 @@
 import { Phone, Mail, ShieldCheck, MapPin } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export function Footer() {
+  const t = useTranslations("Footer");
+
   return (
     <footer className="bg-[#181e2b] text-white overflow-hidden">
       <div className="container mx-auto px-6 py-16">
@@ -17,8 +20,8 @@ export function Footer() {
                 <MapPin className="w-6 h-6 text-white" />
               </div>
               <p className="text-lg md:text-xl font-bold leading-relaxed text-gray-300">
-                Calle Río Guadiana No. 23, Col. Renacimiento, <br />
-                Alcaldía Cuauhtémoc, C.P. 06500, CDMX.
+                {t("contact.address.street")} <br />
+                {t("contact.address.city")}
               </p>
             </div>
 
@@ -46,7 +49,7 @@ export function Footer() {
               <div className="flex items-center gap-3 mb-6">
                 <ShieldCheck className="w-6 h-6 text-green-400" />
                 <p className="text-gray-900 font-black uppercase text-sm tracking-widest">
-                  Pago 100% Seguro
+                  {t("payment.secure_title")}
                 </p>
               </div>
               
@@ -59,7 +62,7 @@ export function Footer() {
                 </div>
               </div>
               <p className="text-gray-400 text-center text-xs font-bold mt-4 uppercase">
-                Aceptamos todas las tarjetas
+                {t("payment.cards_accepted")}
               </p>
             </div>
           </div>
@@ -77,13 +80,13 @@ export function Footer() {
           {/* Enlaces Legales */}
           <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 mb-8">
             {[
-              { name: "Privacidad", href: "/legal/privacidad" },
-              { name: "Términos", href: "/legal/terminos" },
-              { name: "Reembolsos y Cancelaciones", href: "/legal/reembolsos" },
+              { name: t("legal.privacy"), href: "/legal/privacidad" },
+              { name: t("legal.terms"), href: "/legal/terminos" },
+              { name: t("legal.refunds"), href: "/legal/reembolsos" },
             ].map((link) => (
               <Link
                 key={link.name}
-                href={link.href}
+                href={link.href as any}
                 className="text-gray-500 hover:text-green-400 font-bold text-sm uppercase tracking-widest transition-colors"
               >
                 {link.name}
@@ -92,8 +95,8 @@ export function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="text-center text-gray-600 text-xs font-bold tracking-tighter">
-            © 2026 <span className="text-orange-400 uppercase">TURIVANA</span> - EXPERIENCIAS QUE INSPIRAN EL ALMA. TODOS LOS DERECHOS RESERVADOS.
+          <p className="text-center text-gray-600 text-[10px] sm:text-xs font-bold tracking-tighter uppercase">
+            © 2026 <span className="text-orange-400">TURIVANA</span> - {t("copyright.motto")}. {t("copyright.rights")}
           </p>
         </div>
       </div>

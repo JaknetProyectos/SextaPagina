@@ -33,16 +33,16 @@ export async function POST(req: Request) {
         // 2. Enviar correos con Resend
         // Correo al Cliente
         await resend.emails.send({
-            from: 'Odyssey Live <reservas@odysseymexico.com>', // Debe ser un dominio verificado en Resend
+            from: 'Turivana <contacto@turivana.com>', // Debe ser un dominio verificado en Resend
             to: customer.email,
-            subject: `🎟️ Tu Ticket de Aventura: ${paymentResult.orderId}`,
+            subject: `Tu Ticket de Aventura: ${paymentResult.orderId}`,
             html: htmlContent,
         });
 
         // Correo al Admin
         await resend.emails.send({
-            from: 'Odyssey Admin <notificaciones@odysseymexico.com>',
-            to: 'admin@odysseymexico.com',
+            from: 'Turivana Admin <contacto@turivana.com>',
+            to: 'contacto@turivana.com',
             subject: `💰 NUEVA VENTA: ${paymentResult.orderId}`,
             html: `
                 <div style="font-family: sans-serif;">

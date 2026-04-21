@@ -1,402 +1,394 @@
 {
-  "VideoHero": {
-    "concierge_label": "Your Destination Concierge Expert",
-    "title_part1": "Your next adventure",
-    "title_part2": "starts here.",
-    "description": "Forget about planning schedules or reservations. We design tailor-made itineraries so you can discover every destination with the freedom of a local and the comfort of a VIP.",
-    "cta": "Plan my trip",
-    "watch_video": "Watch experiences",
-    "nav": {
-      "home": "Home",
-      "assistance": "Assistance",
-      "why_us": "Why Us",
-      "contact": "Contact",
-      "contact_btn": "Get a Quote"
-    }
-  },
-  "Cart": {
-    "checkout": "Checkout",
-    "empty_title_part1": "Your cart is",
-    "empty_title_part2": "empty",
-    "empty_description": "It looks like you haven't added any adventures to your itinerary yet. The world awaits!",
-    "explore_destinations": "Explore Destinations",
-    "football_passion": "Football Passion",
-    "back_home": "Back to home",
-    "summary": {
-      "title": "Review Selection",
-      "remove": "Remove",
-      "date_label": "Date",
-      "travelers_label": "Travelers",
-      "total_label": "Order total",
-      "people_label": "people"
-    },
-    "billing": {
-      "title": "Billing Details",
-      "labels": {
-        "country": "Country / Region"
-      },
-      "placeholders": {
-        "name": "Full name",
-        "email": "Email address",
-        "address": "Address (Street and number)",
-        "apt": "Apartment, suite, etc. (optional)",
-        "city": "Town / City",
-        "state": "State / Province",
-        "zip": "Zip Code",
-        "phone": "Phone number"
-      },
-      "countries": {
-        "other": "Other"
-      }
-    },
-    "payment": {
-      "title": "Card Payment",
-      "placeholders": {
-        "card_name": "Cardholder name",
-        "card_number": "Card number"
-      },
-      "security_notice": "Payment processed securely with 256-bit SSL",
-      "pay_button": "Pay",
-      "processing": "Processing..."
-    },
-    "success": {
-      "title": "Payment Successful!",
-      "message": "We have sent your booking details to {email}",
-      "back_home": "Back to Home"
-    },
-    "errors": {
-      "missing_data": "Please complete all required fields.",
-      "generic_payment": "Error processing payment"
-    }
-  },
   "Header": {
     "nav": {
       "home": "Home",
-      "assistance": "Our assistance",
-      "why_us": "Why choose us?",
+      "about": "About",
+      "experiences": "Experiences",
       "contact": "Contact",
-      "book_now": "Book now"
+      "mobile_exp_title": "Our Experiences"
+    },
+    "experiences": {
+      "marriage_proposal": "Marriage Proposal Experience",
+      "photo_travel": "Travel Photography Experience in Mexico",
+      "romantic_picnic": "Romantic / Boho Picnic Experience in Mexico",
+      "private_boat": "Private Boat Ride Experiences",
+      "rooftop_dinner": "Secret Spot Rooftop Dinner",
+      "hotel_decoration": "Hotel / Beach Surprise Decoration"
     }
   },
   "Footer": {
-    "payments": {
-      "title": "We accept"
-    },
-    "language": {
-      "title": "Language"
-    },
-    "legal": {
-      "title": "Legal",
-      "privacy": "Privacy policy",
-      "refunds": "Refund policy",
-      "terms": "Terms and conditions"
-    },
     "contact": {
-      "title": "Contact",
-      "tel": "Phone"
-    },
-    "address": {
-      "title": "Address"
-    },
-    "bottom": {
-      "rights": "All rights reserved.",
-      "made_in": "Made in Mexico"
-    }
-  },
-  "Hero": {
-    "title": "Design your Mexico experience",
-    "subtitle": "We create personalized itineraries so you can experience the best of each destination without worrying about logistics.",
-    "features": {
-      "itineraries": {
-        "title": "Custom Itineraries",
-        "desc": "We design your trip day by day according to your interests, from adventures and beaches to gastronomy and culture."
-      },
-      "bookings": {
-        "title": "Exclusive Bookings",
-        "desc": "We manage your reservations at the best local spots, from authentic eateries to Michelin gourmet experiences."
-      },
-      "transport": {
-        "title": "Transport Coordination",
-        "desc": "We organize airport-hotel transfers, car rentals, and private transport so you can move around hassle-free."
-      },
-      "vip": {
-        "title": "VIP Access Tours",
-        "desc": "We manage your excursions and adventure activities with priority and exclusive access whenever possible."
-      },
-      "concierge": {
-        "title": "Direct Contact",
-        "desc": "You'll have direct contact with your concierge via chat or call for changes, questions, or instant recommendations."
-      },
-      "local": {
-        "title": "Local Experiences",
-        "desc": "Enjoy each destination like a true local, with experiences fully tailored to your days and preferences."
-      }
-    },
-    "cta": "Explore experiences",
-    "why_us": {
-      "title": "Why choose us?",
-      "subtitle": "We take care of every detail so your only job is to enjoy the experience.",
-      "cards": {
-        "immediate": {
-          "title": "Immediate Action",
-          "desc": "We design your trip day by day according to your interests, from adventures and beaches to gastronomy and culture."
-        },
-        "experts": {
-          "title": "Local Experts",
-          "desc": "We know the most authentic and exclusive corners of Mexico. Access experiences you won't find in conventional travel guides."
-        },
-        "planning": {
-          "title": "Perfect Planning",
-          "desc": "Transparent planning with no hidden fees. We design optimized routes so you can enjoy every minute of your stay stress-free."
-        },
-        "care": {
-          "title": "Personal Care",
-          "desc": "Your safety and well-being are our priority. We adapt every reservation to your tastes, allergies, or specific preferences."
-        }
-      }
-    }
-  },
-  "ArmaAventuraSection": {
-    "image_alt": "Group of travelers",
-    "title": "Tailor-made travel assistance Your personal concierge in Mexico",
-    "description": "Forget about planning everything on your own and worrying about schedules or reservations. With our personalized assistance service, we adapt every detail of your trip according to your tastes, time, and budget. You tell us what kind of experiences you're looking for, and we take care of the rest.",
-    "list_title": "What we can do for you:",
-    "items": {
-      "itineraries": {
-        "label": "Custom itineraries: ",
-        "text": "We design your trip day by day according to your interests, from adventures, beaches, gastronomy, culture, to wellness activities."
-      },
-      "restaurants": {
-        "label": "Restaurants: ",
-        "text": "We show you the best local spots and make reservations so you can just enjoy."
-      },
-      "transport": {
-        "label": "Transportation: ",
-        "text": "We organize transfers, car rentals, and private transportation without complications."
-      },
-      "tours": {
-        "label": "Exclusive tours: ",
-        "text": "We manage experiences with priority access and VIP options."
-      }
-    }
-  },
-  "CotizacionSection": {
-    "image_alt": "Travel experiences in Mexico",
-    "title": "Do you already have a quote?",
-    "description": "If you already have a quote sent by your concierge, click the button below. Enter your budget details and process your payment quickly and securely.",
-    "button": "Add to cart"
-  },
-  "ContactAventura": {
-    "title": "How can we <br /> help you today?",
-    "subtitle": "Whether you have a quick question or want us to design your next big trip, we are here to make your visit to Mexico unforgettable.",
-    "success": {
-      "title": "Received!",
-      "message": "Our team will get in touch with you in less than 24 hours.",
-      "send_another": "Send another message"
-    },
-    "form": {
-      "placeholders": {
-        "name": "Full Name",
-        "email": "Email address",
-        "phone": "Phone number",
-        "message": "Tell us your doubts or ideas..."
-      },
-      "labels": {
-        "reason": "Reason for contact",
-        "departure": "Departure",
-        "return": "Return",
-        "travelers": "Travelers"
-      },
-      "options": {
-        "concierge": "Tailor-made trip (Concierge Service)",
-        "tours_doubt": "Question about tours",
-        "booking_help": "Assistance with existing booking",
-        "person": "person",
-        "people": "people"
-      },
-      "submit": "Send request",
-      "disclaimer": "By sending, you accept our privacy policies and terms of service."
-    },
-    "alerts": {
-      "email_error": "Error sending email, but your request was saved.",
-      "connection_error": "Connection error."
-    }
-  },
-  "ExperiencesPage": {
-    "main_title": "Your next adventure",
-    "subtitle": "Selección exclusiva de experiencias diseñadas para viajeros exigentes.",
-    "tax_included": "VAT (16%) included",
-    "book_now": "Book now",
-    "no_results": "No experiences available at this moment",
-    "error": "Error loading experiences",
-    "pagination": {
-      "prev": "Previous",
-      "next": "Next",
-      "page": "Page",
-      "of": "of"
-    }
-  },
-  "ExperienceDetailPage": {
-    "error_loading": "Error loading the experience",
-    "booking": {
-      "per_person": "/ person",
-      "tax_included": "VAT Included",
-      "select_date": "Select your date",
-      "travelers": "Number of people",
-      "add_to_cart": "Add to cart",
-      "added": "Added!"
-    },
-    "trust": {
-      "quick_confirmation": "Quick confirmation",
-      "secure_payment": "Secure online payment"
-    },
-    "details": {
-      "title": "Experience details",
-      "itinerary": "Itinerary",
-      "included": "Included",
-      "not_included": "Not included",
-      "service_features": "Service features",
-      "accessibility": "Accessibility",
-      "booking_info": "Booking information"
-    },
-    "alerts": {
-      "select_date": "Please select a date for your adventure",
-      "payment_error": "We couldn't process your payment. Please try again."
-    }
-  },
-  "CategoryPage": {
-    "tax_included": "VAT (16%) included",
-    "book_now": "Book now",
-    "not_found": {
-      "title": "Category not found",
-      "back": "Back to home"
-    },
-    "modal": {
-      "book_label": "Book",
-      "per_person": "per person",
-      "confirm_button": "Confirm Booking",
-      "fields": {
-        "date": "Date",
-        "people": "People",
-        "name": "Name",
-        "email": "Email",
-        "phone": "Phone"
-      },
-      "success": {
-        "title": "Booking confirmed",
-        "message": "We will send the details via email",
-        "close": "Close"
-      }
-    }
-  },
-  "CartPage": {
-    "cart": {
-      "title": "Travel Bag",
-      "items": "Items",
-      "remove": "Remove",
-      "selected_date": "Selected Date",
-      "travelers": "Number of Travelers",
-      "total_estimated": "Estimated Total"
-    },
-    "form": {
-      "billing_details": "Billing Details",
-      "placeholders": {
-        "name": "Full Name",
-        "email": "Contact Email",
-        "phone": "Phone Number",
-        "address": "Address (Street and house/apt number)",
-        "apartment": "Apartment, suite, unit, etc. (Optional)",
-        "city": "City",
-        "state": "State",
-        "zip": "Zip Code"
+      "address": {
+        "street": "23 Rio Guadiana St., Renacimiento,",
+        "city": "Cuauhtemoc, Zip Code 06500, Mexico City."
       }
     },
     "payment": {
-      "method": "Payment Method",
-      "processing": "Processing...",
-      "confirm_booking": "Confirm Booking",
-      "security_notice": "Your payments are processed securely under 256-bit PCI-DSS standards.",
-      "placeholders": {
-        "card_name": "Cardholder Name",
-        "card_number": "Card Number"
+      "secure_title": "100% Secure Payment",
+      "cards_accepted": "All cards accepted"
+    },
+    "legal": {
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "refunds": "Refunds & Cancellations"
+    },
+    "copyright": {
+      "motto": "Experiences that inspire the soul",
+      "rights": "All rights reserved."
+    }
+  },
+  "CoverageSection": {
+    "badge": "National Presence",
+    "title": "Coverage and <span>Conditions</span>",
+    "subtitle": "Discover all our destinations",
+    "description": "Our services are available in the main cities of Mexico. Logistics are adapted to each destination to ensure your experience is perfect.",
+    "list_title": "We operate in:",
+    "locations": "Mexico City • Guadalajara • Monterrey • Cancun • Riviera Maya • Puerto Vallarta • Los Cabos • San Miguel de Allende • Valle de Bravo",
+    "button_text": "See coverage details"
+  },
+  "CTACard": {
+    "top_text": "Moments that last forever",
+    "title": "Travel to your dream <span>destination</span>",
+    "buttons": {
+      "experiences": "Experiences",
+      "services": "Our Services"
+    }
+  },
+  "HeroCarousel": {
+    "cta_button": "DISCOVER NOW",
+    "slides": {
+      "1": {
+        "title": "Surprise Hotel / Beach Decoration",
+        "subtitle": "Design Your Proposal Completely To Your Measure"
+      },
+      "2": {
+        "title": "Marriage Proposal Experience",
+        "subtitle": "We design unique and romantic proposals to make that 'yes' unforgettable"
+      },
+      "3": {
+        "title": "Romantic Picnic Experience",
+        "subtitle": "Live an intimate, aesthetic moment designed in a natural environment"
+      }
+    }
+  },
+  "ExperiencesSection": {
+    "badge": "Exclusive Catalog",
+    "title": "Unforgettable <span>Experiences</span>",
+    "button_text": "VIEW DETAILS",
+    "items": {
+      "1": {
+        "title": "Travel Photography Experience",
+        "description": "Turn your trips into eternal memories with professional photographers."
+      },
+      "2": {
+        "title": "Romantic / Boho Picnic",
+        "description": "Live an intimate, aesthetic moment designed in a natural setting."
+      },
+      "3": {
+        "title": "Private Boat Ride",
+        "description": "Sail in a spectacular natural environment with total privacy."
+      },
+      "4": {
+        "title": "Secret Spot Rooftop Dinner",
+        "description": "Exclusive rooftop with panoramic views, designed for intimate moments."
+      },
+      "5": {
+        "title": "Marriage Proposal",
+        "description": "Romantic and coordinated designs to make that 'yes' unforgettable."
+      },
+      "6": {
+        "title": "Surprise Decoration",
+        "description": "We transform rooms or villas into perfect romantic settings."
+      }
+    }
+  },
+  "WhyUsSection": {
+    "badge": "Why choose us?",
+    "title": "We customize every  <span>detail of your trip</span>",
+    "feature": {
+      "title": "Tailor-made experiences",
+      "description": "Our services are available in the best destinations in Mexico. You can add additional elements with a personalized quote according to your dreams."
+    },
+    "button_text": "REQUEST INFORMATION"
+  },
+  "AboutPage": {
+    "hero": {
+      "title": "About us"
+    },
+    "coverage": {
+      "title": "Coverage and <br /> <span>General Conditions</span>",
+      "description": "Our services are available in different cities and destinations within Mexico. Availability, logistics, and additional costs may vary depending on the type of experience and the selected plan.",
+      "list_title": "Available Cities",
+      "operating_in": "Operating in",
+      "city_list": [
+        "Mexico City",
+        "Guadalajara",
+        "Monterrey",
+        "Cancun",
+        "Riviera Maya",
+        "Puerto Vallarta",
+        "Los Cabos",
+        "San Miguel de Allende",
+        "Valle de Bravo",
+        "Xochimilco",
+        "Queretaro",
+        "Leon",
+        "Puebla",
+        "Toluca",
+        "Tijuana",
+        "Mazatlan",
+        "Oaxaca",
+        "Merida",
+        "Cozumel",
+        "Villahermosa",
+        "Acapulco",
+        "Chihuahua",
+        "Morelia",
+        "Aguascalientes",
+        "San Luis Potosi",
+        "Culiacan",
+        "Durango",
+        "Zacatecas",
+        "Tepic",
+        "Ensenada"
+      ],
+      "personalize": {
+        "title": "Personalize your experience",
+        "description": "If you wish to hold your experience in a city or destination not on this list, contact us for a personalized quote based on location and required logistics.",
+        "button": "CONTACT US"
       }
     },
-    "modals": {
+    "quote": "Each experience can be adjusted and scaled according to the level of production you desire.",
+    "reservations": {
+      "title": "Reservations",
+      "subtitle": "We recommend making your reservation at least one week in advance.",
+      "description": "For premium experiences, special destinations, or high seasons, it is suggested to book further in advance to ensure availability of locations, providers, and production."
+    },
+    "extras": {
+      "title": "Optional Extras",
+      "subtitle": "Depending on the service and plan contracted, you can add additional elements with a personalized quote, such as:",
+      "items": [
+        "Professional video",
+        "Makeup artists and stylists",
+        "Live musicians",
+        "Aerial drone footage",
+        "Live chef",
+        "Desserts or additional menu",
+        "Special themed decoration",
+        "Private transportation",
+        "Time extension"
+      ]
+    },
+    "logistics": {
+      "title": "Transport & Logistics",
+      "subtitle": "The cost of transportation is quoted independently and may vary according to:",
+      "details": [
+        "Team base city",
+        "Distance to destination",
+        "Type of experience contracted",
+        "Required production level"
+      ],
+      "footer": "For experiences outside the base city, an additional cost may apply for travel, lodging, and operational logistics."
+    },
+    "custom_quote": {
+      "title": "Custom Quote",
+      "locations_subtitle": "We can perform this experience in:",
+      "locations_items": [
+        "Boutique hotels",
+        "Private beach villas",
+        "Romantic cabins",
+        "Executive suites",
+        "Special destinations within Mexico"
+      ],
+      "investment_subtitle": "The final investment will depend on:",
+      "investment_items": [
+        "City or destination",
+        "Production level",
+        "Hotel policies",
+        "Audiovisual coverage",
+        "Transfer logistics"
+      ]
+    }
+  },
+  "PaymentPage": {
+    "title": "Pay for your <span>Adventure</span>",
+    "subtitle": "Enter the quote details agreed upon with your advisor.",
+    "fields": {
+      "name": {
+        "label": "Account holder name",
+        "placeholder": "e.g., John Doe"
+      },
+      "email": {
+        "label": "Email address",
+        "placeholder": "your@email.com"
+      },
+      "folio": {
+        "label": "Quote Folio"
+      },
+      "amount": {
+        "label": "Total Agreed Amount (Tax Included)",
+        "disclaimer": "* This amount will be the final charge on your card."
+      }
+    },
+    "buttons": {
+      "submit": "Add to my order",
+      "success": "Added to Cart!"
+    },
+    "secure_payment": "100% Secure Payment",
+    "cart_info": {
+      "experience_name": "Custom Experience",
+      "folio_label": "Quote Folio",
+      "duration": "Custom logistics"
+    }
+  },
+  "QuoteCTA": {
+    "title": "Already have a quote?",
+    "button": "Pay for your experience"
+  },
+  "ContactPage": {
+    "hero_title": "How can we help you",
+    "intro_text": "Each experience can be adjusted and scaled according to the level of production you desire.",
+    "form": {
+      "success_title": "Message Sent!",
+      "success_message": "We will get in touch with you very soon.",
+      "error_api": "Connection error. Please try again later.",
+      "button": "SEND MESSAGE",
+      "placeholders": {
+        "name": "Full name",
+        "email": "Email address",
+        "phone": "Phone number",
+        "message": "Tell us about your event or questions..."
+      }
+    },
+    "reservations": {
+      "title": "Reservations",
+      "content": "We recommend making your reservation at least one week in advance. For premium experiences, special destinations, or high seasons, it is suggested to book further in advance to ensure availability of locations, providers, and production."
+    },
+    "extras": {
+      "title": "Optional Extras",
+      "subtitle": "Depending on the service and plan contracted, you can add additional elements with a personalized quote, such as:",
+      "items": [
+        "Professional video",
+        "Makeup artists and stylists",
+        "Live musicians",
+        "Aerial drone footage",
+        "Live chef",
+        "Desserts or additional menu",
+        "Special themed decoration",
+        "Private transportation",
+        "Time extension"
+      ]
+    }
+  },
+  "CartPage": {
+    "title": "Your <span>Turivana</span> Selection",
+    "empty": {
+      "title": "Your cart is empty",
+      "button": "EXPLORE EXPERIENCES"
+    },
+    "items": {
+      "tag_custom": "Customized",
+      "tag_plan": "Plan",
+      "pax": "PAX",
+      "iva_included": "Tax Included"
+    },
+    "summary": {
+      "total_label": "Total to pay"
+    },
+    "form": {
+      "contact_title": "Contact Details",
+      "payment_title": "Payment Method",
+      "placeholders": {
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address",
+        "city": "City",
+        "zip": "Zip Code",
+        "card_number": "Card Number",
+        "card_holder": "Cardholder Name"
+      },
+      "submit_button": "CONFIRM PAYMENT",
+      "encryption_note": "Transaction encrypted by Keycop SSL"
+    },
+    "modal": {
+      "success_title": "Payment Confirmed!",
       "error_title": "Payment Error",
-      "try_again": "Try Again",
-      "success_title": "Confirmed!",
-      "success_message": "Your adventure in Mexico starts now. We've sent the details to",
-      "summary": "Booking Summary",
-      "finish": "Finish"
+      "success_message": "Your payment has been confirmed. We have sent the details of your adventure to your email.",
+      "default_error": "There was a problem with the transaction.",
+      "reference": "Reference",
+      "ticket_sent": "Digital ticket sent",
+      "insurance_active": "Traveler insurance active",
+      "button_success": "CLOSE AND BACK TO HOME",
+      "button_error": "TRY AGAIN",
+      "thanks": "Thank you for choosing Turivana"
+    }
+  },
+  "CustomQuote": {
+    "tag": "Custom Design",
+    "default_data": {
+      "title": "Custom Quote",
+      "description": "We can tailor this experience specifically for you."
+    },
+    "form_header": {
+      "title": "Start your request",
+      "subtitle": "Tell us what you need and we will create it."
+    },
+    "placeholders": {
+      "name": "Full name",
+      "email": "Email address",
+      "location": "City or destination",
+      "message": "Tell us more details about what you imagine..."
+    },
+    "options": {
+      "group_type": {
+        "label": "How are you traveling? (Group type)",
+        "individual": "Individual",
+        "couple": "As a couple",
+        "group": "Group (+4 people)"
+      }
+    },
+    "submit_button": "SEND REQUEST",
+    "status": {
+      "success_title": "Request Received",
+      "success_message": "A concierge will contact you to finalize the details of your custom experience.",
+      "retry_button": "Make another request",
+      "error_message": "We're sorry, an error occurred. Please try again."
+    }
+  },
+  "PlanDetailModal": {
+    "tax_included": "Tax Included",
+    "estimated_duration": "ESTIMATED DURATION",
+    "defaults": {
+      "to_be_consulted": "TO BE CONSULTED"
     },
     "alerts": {
-      "complete_fields": "Please complete all mandatory fields.",
-      "process_error": "Error processing payment"
-    }
-  },
-  "Emails": {
-    "Quote": {
-      "subject": "Inquiry Confirmation",
-      "title": "Request Received",
-      "greeting": "Hello {name}, we are designing a personalized proposal for <strong>{experience}</strong>. A concierge will contact you shortly.",
-      "disclaimer": "This is an automated receipt. No reply is necessary.",
-      "labels": {
-        "pax": "Pax",
-        "people": "People",
-        "period": "Period",
-        "to": "to",
-        "notes": "Travel notes"
-      }
+      "select_date": "Please select a date for your experience."
     },
-    "Checkout": {
-      "subject": "ORDER CONFIRMATION",
-      "confirmation_title": "Confirmation",
-      "order_label": "Order",
-      "table": {
-        "header_experience": "Experience / Detail",
-        "header_pax": "Pax",
-        "reservation_label": "Booking"
-      },
-      "summary": {
-        "total_paid": "Total Amount Paid",
-        "payment_method": "Payment Method"
-      },
-      "billing": {
-        "title": "Billing Info",
-        "phone": "Phone"
-      },
-      "footer": {
-        "thanks": "Thank you for choosing exclusivity"
-      }
+    "sections": {
+      "description": "Plan Description",
+      "includes": "What's included",
+      "not_includes": "Not included",
+      "config": "Set up your experience"
+    },
+    "form": {
+      "date_label": "Desired date",
+      "pax_label": "Number of people (PAX)",
+      "button_reserve": "BOOK NOW",
+      "button_added": "ADDED"
+    },
+    "sidebar": {
+      "title": "Visionary",
+      "description": "Looking for a destination off the list? We design your experience from scratch with customized logistics.",
+      "button": "LET'S TALK"
     }
   },
-  "payQuote": {
-    "specialServices": "Special Services",
-    "personalizedExperience": "Personalized Experience",
-    "confirmationTitle": "Personalized Reservation Confirmation",
-    "description": "This section is exclusive to clients who already have an itinerary and budget sent by their concierge.",
-    "stepsTitle": "Steps to complete your payment:",
-    "step1": "1. Amount: Enter the total agreed amount in the price box (VAT included).",
-    "step2": "2. Reference: Enter your folio number or package name in the text field.",
-    "step3": "3. Security: Click “Add to Cart” to proceed to encrypted payment.",
-    "quoteButton": "Get a quote here",
-    "assistanceText": "If you have any questions about this tour or need assistance making your reservation, we will be happy to help.",
-    "checkoutTitle": "Personalized Checkout",
-    "checkoutSubtitle": "Enter the details of your agreed quote",
-    "labelFolio": "Quote No.",
-    "labelNombre": "Name",
-    "labelMonto": "Total agreed amount (MXN)",
-    "placeholderFolio": "WNDR-XXXXX",
-    "placeholderNombre": "Name",
-    "placeholderMonto": "0.00",
-    "statusFound": "FOLIO FOUND: DATA UPDATED",
-    "statusExternal": "EXTERNAL FOLIO: ENTER THE AGREED AMOUNT",
-    "holderLabel": "Reservation holder",
-    "addToCart": "Add to bag",
-    "confirmationDisclaimer": "By adding to the bag, you confirm that the folio and amount correspond to the quote sent by our Odyssey México team.",
-    "customOrder": "CUSTOM ORDER",
-    "externalFolio": "EXTERNAL FOLIO",
-    "client": "CLIENT",
-    "destination": "Odyssey México EXPERIENCE"
+  "ExperiencePage": {
+    "ideal_tag": "Profiles",
+    "ideal_title": "Ideal for",
+    "plans_title": "Our Plans",
+    "price_suffix": "MXN • TAX INCLUDED",
+    "details_button": "VIEW DETAILS"
   }
 }

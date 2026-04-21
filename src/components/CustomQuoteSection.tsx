@@ -1,7 +1,8 @@
 "use client";
 
-import { MapPin, Send, Sparkles, Globe, Loader2, CheckCircle2 } from "lucide-react";
+import { Send, Sparkles, Globe, Loader2, CheckCircle2 } from "lucide-react";
 import { useContactForm } from "@/hooks/useContactForm";
+import { useTranslations } from "next-intl";
 
 interface CustomQuoteProps {
   data?: {
@@ -24,7 +25,7 @@ interface CustomQuoteProps {
 }
 
 export function CustomQuoteSection({ data, visibleFields }: CustomQuoteProps) {
-  // Implementación del hook
+  const t = useTranslations("CustomQuote");
   const { formData, loading, status, handleChange, handleSubmit } = useContactForm();
 
   const fields = {
@@ -36,9 +37,9 @@ export function CustomQuoteSection({ data, visibleFields }: CustomQuoteProps) {
     message: visibleFields?.message ?? true,
   };
 
-  const title = data?.title || "Cotización Personalizada";
+  const title = data?.title || t("default_data.title");
   const bgImage = data?.background || "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1920&q=80";
-  const description = data?.description || "Podemos realizar esta experiencia a tu medida.";
+  const description = data?.description || t("default_data.description");
 
   return (
     <section className="relative py-24 overflow-hidden min-h-[800px] flex items-center">
@@ -57,11 +58,11 @@ export function CustomQuoteSection({ data, visibleFields }: CustomQuoteProps) {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           
-          {/* Columna de Información (Izquierda) */}
+          {/* Columna de Información */}
           <div className="text-white space-y-10">
             <div>
               <span className="bg-orange-400 text-white px-6 py-2 rounded-full font-black text-sm uppercase tracking-widest">
-                Diseño a medida
+                {t("tag")}
               </span>
               <h2 className="text-4xl md:text-6xl font-black mt-6 leading-tight">
                 {title}
@@ -91,20 +92,20 @@ export function CustomQuoteSection({ data, visibleFields }: CustomQuoteProps) {
             </div>
           </div>
 
-          {/* Formulario (Derecha) */}
+          {/* Formulario */}
           <div className="bg-white rounded-[40px] p-8 md:p-12 shadow-none border-none">
             {status === "success" ? (
               <div className="py-20 text-center space-y-6 animate-in fade-in zoom-in duration-500">
                 <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-10 h-10 text-green-500" />
                 </div>
-                <h3 className="text-3xl font-black text-gray-900 uppercase">Solicitud Recibida</h3>
-                <p className="text-gray-500 font-bold">Un concierge se pondrá en contacto contigo para detallar tu experiencia personalizada.</p>
+                <h3 className="text-3xl font-black text-gray-900 uppercase">{t("status.success_title")}</h3>
+                <p className="text-gray-500 font-bold">{t("status.success_message")}</p>
                 <button 
                   onClick={() => window.location.reload()}
                   className="text-gray-900 font-black underline underline-offset-4"
                 >
-                  Realizar otra solicitud
+                  {t("status.retry_button")}
                 </button>
               </div>
             ) : (
@@ -114,9 +115,9 @@ export function CustomQuoteSection({ data, visibleFields }: CustomQuoteProps) {
                     <Globe className="w-8 h-8 text-green-400" />
                   </div>
                   <h3 className="text-3xl font-black text-gray-900 uppercase">
-                    Inicia tu solicitud
+                    {t("form_header.title")}
                   </h3>
-                  <p className="text-gray-500 font-bold mt-2">Dinos qué necesitas y nosotros lo creamos.</p>
+                  <p className="text-gray-500 font-bold mt-2">{t("form_header.subtitle")}</p>
                 </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -128,7 +129,7 @@ export function CustomQuoteSection({ data, visibleFields }: CustomQuoteProps) {
                         name="nombre"
                         value={formData.nombre}
                         onChange={handleChange}
-                        placeholder="Nombre completo" 
+                        placeholder={t("placeholders.name")} 
                         className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-4 focus:ring-green-400/20 outline-none font-bold text-gray-900" 
                       />
                     )}
@@ -139,7 +140,7 @@ export function CustomQuoteSection({ data, visibleFields }: CustomQuoteProps) {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="Correo electrónico" 
+                        placeholder={t("placeholders.email")} 
                         className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-4 focus:ring-green-400/20 outline-none font-bold text-gray-900" 
                       />
                     )}
@@ -162,7 +163,7 @@ export function CustomQuoteSection({ data, visibleFields }: CustomQuoteProps) {
                         name="destino"
                         value={formData.destino}
                         onChange={handleChange}
-                        placeholder="Ciudad o destino" 
+                        placeholder={t("placeholders.location")} 
                         className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-4 focus:ring-green-400/20 outline-none font-bold text-gray-900" 
                       />
                     )}
@@ -176,10 +177,10 @@ export function CustomQuoteSection({ data, visibleFields }: CustomQuoteProps) {
                         onChange={handleChange}
                         className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-4 focus:ring-green-400/20 outline-none font-bold text-gray-600 appearance-none"
                       >
-                        <option value="">¿Cómo viajas? (Tipo de grupo)</option>
-                        <option value="individual">Individual</option>
-                        <option value="pareja">En pareja</option>
-                        <option value="grupo">Grupo (+4 personas)</option>
+                        <option value="">{t("options.group_type.label")}</option>
+                        <option value="individual">{t("options.group_type.individual")}</option>
+                        <option value="pareja">{t("options.group_type.couple")}</option>
+                        <option value="grupo">{t("options.group_type.group")}</option>
                       </select>
                       <div className="absolute inset-y-0 right-6 flex items-center pointer-events-none">
                         <div className="w-2 h-2 border-b-2 border-r-2 border-gray-400 rotate-45" />
@@ -193,7 +194,7 @@ export function CustomQuoteSection({ data, visibleFields }: CustomQuoteProps) {
                       name="mensaje"
                       value={formData.mensaje}
                       onChange={handleChange}
-                      placeholder="Cuéntanos más detalles sobre lo que imaginas..." 
+                      placeholder={t("placeholders.message")} 
                       rows={4} 
                       className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-4 focus:ring-green-400/20 outline-none font-bold text-gray-900 resize-none" 
                     />
@@ -208,7 +209,7 @@ export function CustomQuoteSection({ data, visibleFields }: CustomQuoteProps) {
                       <Loader2 className="w-6 h-6 animate-spin" />
                     ) : (
                       <>
-                        ENVIAR SOLICITUD
+                        {t("submit_button")}
                         <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                       </>
                     )}
@@ -216,7 +217,7 @@ export function CustomQuoteSection({ data, visibleFields }: CustomQuoteProps) {
                   
                   {status === "error" && (
                     <p className="text-red-500 text-center font-bold text-sm mt-2">
-                      Lo sentimos, hubo un error. Inténtalo de nuevo.
+                      {t("status.error_message")}
                     </p>
                   )}
                 </form>

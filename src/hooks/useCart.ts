@@ -14,7 +14,7 @@ export function useCart() {
 
     // Cargar carrito desde localStorage al montar
     useEffect(() => {
-        const savedCart = localStorage.getItem("odyssey_cart");
+        const savedCart = localStorage.getItem("cart");
         if (savedCart) {
             try {
                 setItems(JSON.parse(savedCart));
@@ -28,7 +28,7 @@ export function useCart() {
     // Guardar en localStorage cada vez que cambie
     useEffect(() => {
         if (isInitialized) {
-            localStorage.setItem("odyssey_cart", JSON.stringify(items));
+            localStorage.setItem("cart", JSON.stringify(items));
         }
     }, [items, isInitialized]);
 
@@ -42,7 +42,7 @@ export function useCart() {
 
     const clearCart = () => {
         setItems([]);
-        localStorage.removeItem("odyssey_cart");
+        localStorage.removeItem("cart");
     };
 
     const cartCount = items.length;
