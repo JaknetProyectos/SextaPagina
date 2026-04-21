@@ -75,7 +75,7 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
     addItem(newItem);
     setAdded(true);
 
-    router.push("/cart")
+    router.replace("/cart")
 
     setTimeout(() => {
       setAdded(false);
