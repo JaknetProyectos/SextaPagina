@@ -19,6 +19,7 @@ import { PagarCotizacion } from "./PagarCotizacion";
 import { useCart } from "@/hooks/useCart";
 import { CartItem } from "@/interfaces/cart/CartItem";
 import { useLocale, useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 interface Plan {
   slug: string;
@@ -53,6 +54,8 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
   const [fecha, setFecha] = useState("");
   const [added, setAdded] = useState(false);
 
+  const router = useRouter()
+
   const handleAddToCart = () => {
     if (!fecha) {
       alert(t("alerts.select_date"));
@@ -71,6 +74,8 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
 
     addItem(newItem);
     setAdded(true);
+
+    router.push("/cart")
 
     setTimeout(() => {
       setAdded(false);

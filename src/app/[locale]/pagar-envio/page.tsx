@@ -7,6 +7,7 @@ import { useCart } from '@/hooks/useCart';
 import { CartItem } from '@/interfaces/cart/CartItem';
 import { CheckCircle2, DollarSign, User, Mail, Hash, Sparkles, ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 
 interface PaymentFormData {
     nombre: string;
@@ -23,6 +24,7 @@ const PaymentForm = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm<PaymentFormData>();
     
     const total = watch('costoBase') || 0;
+    const router = useRouter()
 
     const onSubmit = (data: PaymentFormData) => {
         const customItem: CartItem = {
@@ -39,6 +41,8 @@ const PaymentForm = () => {
         };
 
         addToCart(customItem);
+        router.replace("/cart")
+
         setIsAdded(true);
         setTimeout(() => setIsAdded(false), 3000);
     };
