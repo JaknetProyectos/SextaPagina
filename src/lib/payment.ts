@@ -32,7 +32,6 @@ async function tokenizeCard(token: string, card: Omit<CardInformation, 'cvv'>) {
     headers: { Authorization: `Bearer ${token}` }
   });
 
-  console.log(data)
   return data.cardNumberToken;
 }
 
@@ -64,7 +63,6 @@ export async function processKeycopPayment(input: PaymentRequest): Promise<Payme
       headers: { Authorization: `Bearer ${authToken}` }
     });
 
-    console.log(data)
 
     return {
       success: data.status == "APPROVED",
@@ -74,7 +72,7 @@ export async function processKeycopPayment(input: PaymentRequest): Promise<Payme
     };
 
   } catch (error: any) {
-    console.log(error.response)
+
     console.error("Keycop Payment Error:", error.response?.data || error.message);
     return {
       success: false,
