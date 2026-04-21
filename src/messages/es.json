@@ -39,7 +39,7 @@
   },
   "CoverageSection": {
     "badge": "Presencia Nacional",
-    "title": "Cobertura y <br /> <span>Condiciones</span>",
+    "title": "Cobertura y <span>Condiciones</span>",
     "subtitle": "Conoce todos nuestros destinos",
     "description": "Nuestros servicios están disponibles en las principales ciudades de México. La logística se adapta a cada destino para garantizar que tu experiencia sea perfecta.",
     "list_title": "Operamos en:",
@@ -116,7 +116,7 @@
       "title": "Acerca de nosotros"
     },
     "coverage": {
-      "title": "Cobertura y <br /> <span>Condiciones Generales</span>",
+      "title": "Cobertura y <span>Condiciones Generales</span>",
       "description": "Nuestros servicios están disponibles en distintas ciudades y destinos dentro de México. La disponibilidad, logística y costos adicionales pueden variar según el tipo de experiencia y el plan seleccionado.",
       "list_title": "Ciudades Disponibles",
       "operating_in": "Operamos en",

@@ -183,6 +183,7 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
                   </label>
                   <input
                     type="date"
+                    min={new Date().toISOString().split("T")[0]}
                     value={fecha}
                     onChange={(e) => setFecha(e.target.value)}
                     className="w-full bg-white border-none p-5 rounded-2xl outline-none font-bold text-gray-900 focus:ring-4 focus:ring-green-400/20"

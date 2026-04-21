@@ -34,11 +34,11 @@ export function Footer() {
                 <span className="font-black text-lg">+52 1 55 5546 4355</span>
               </Link>
               <Link
-                href="mailto:hello@turivana.com"
+                href="mailto:contacto@turivana.com"
                 className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl hover:bg-orange-400/20 transition-all border border-white/10"
               >
                 <Mail className="w-6 h-6 text-orange-400" />
-                <span className="font-black text-lg">hello@turivana.com</span>
+                <span className="font-black text-lg">contacto@turivana.com</span>
               </Link>
             </div>
           </div>

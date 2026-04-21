@@ -152,6 +152,7 @@ export function CustomQuoteSection({ data, visibleFields }: CustomQuoteProps) {
                         required
                         type="date" 
                         name="fecha"
+                        min={new Date().toISOString().split("T")[0]}
                         value={formData.fecha}
                         onChange={handleChange}
                         className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-4 focus:ring-green-400/20 outline-none font-bold text-gray-500" 
