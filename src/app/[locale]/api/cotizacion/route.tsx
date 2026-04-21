@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Colores de marca
 const COLORS = {
-  green: "#008080",
+  green: "#2b7b2b",
   orange: "#FB923C",
   white: "#FFFFFF",
   grayBg: "#F4F7F7",
@@ -86,7 +86,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: "Turivana <contacto@turivana.com>",
       to: "contacto@turivana.com",
-      subject: `🚨 LEAD: ${nombre} - ${destino || 'Consulta'}`,
+      subject: `LEAD: ${nombre} - ${destino || 'Consulta'}`,
       html: `
       <div style="background: #f4f7f7; padding: 40px 20px; font-family: sans-serif;">
         <div style="max-width: 600px; margin: 0 auto; background: white; border-radius: 16px; border: 2px solid ${COLORS.green}; overflow: hidden;">

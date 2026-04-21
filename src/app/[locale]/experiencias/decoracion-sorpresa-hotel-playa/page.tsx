@@ -1,11 +1,13 @@
 import { ExperiencePage } from "@/components/ExperiencePage";
+import { getOptimizedUrl } from "@/lib/images";
 import { useLocale } from "next-intl";
 
 function DecorationSorpresaES() {
     return (
         <ExperiencePage
             title="Decoración Sorpresa Hotel / Playa"
-            heroImage="/images.png"
+            heroImage={getOptimizedUrl("https://images.unsplash.com/photo-1629744418692-345355518e78?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")}
+            image2={getOptimizedUrl("https://images.unsplash.com/photo-1629186812846-ac85f7d984d6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")}
             subtitle="Contáctanos para diseñar tu propuesta completamente a tu medida."
             description="Transformamos habitaciones de hotel o villas privadas en escenarios románticos perfectos para sorprender en aniversarios, cumpleaños o escapadas especiales. Disponible en hoteles y destinos de playa en distintas ciudades de México (previa coordinación con el hotel)."
             slug="decoracion-sorpresa-hotel-playa"
@@ -28,7 +30,7 @@ function DecorationSorpresaES() {
             ]}
             plans={[
                 {
-                    backgroundImage: "image.png",
+                    backgroundImage: getOptimizedUrl("https://images.unsplash.com/photo-1678977023660-28790da72185?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     color: "#61a9bd",
                     description: " ",
                     features: [],
@@ -50,7 +52,7 @@ function DecorationSorpresaES() {
                     slug: "sorpresa-esencial"
                 },
                 {
-                    backgroundImage: "image.png",
+                    backgroundImage: getOptimizedUrl("https://images.unsplash.com/photo-1678977023660-28790da72185?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     color: "#61a9bd",
                     description: "Para celebraciones en hoteles boutique o villas privadas.",
                     features: [],
@@ -75,7 +77,7 @@ function DecorationSorpresaES() {
                     slug: "sorpresa-signature"
                 },
                 {
-                    backgroundImage: "image.png",
+                    backgroundImage: getOptimizedUrl("https://images.unsplash.com/photo-1678977023660-28790da72185?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     color: "#61a9bd",
                     description: "Más producción visual y experiencia más impactante.",
                     features: [],
@@ -99,7 +101,7 @@ function DecorationSorpresaES() {
 
             cotizacion={
                 {
-                    background: "images.png",
+                    background: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1673448758890-bd81d34dae1c?q=80&w=1033&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     title: "Cotización Personalizada – Decoraciones",
                     description: "Podemos realizar esta experiencia en:",
                     lists: [
@@ -133,7 +135,8 @@ function DecorationSorpresaEn() {
     return (
         <ExperiencePage
             title="Hotel / Beach Surprise Decoration"
-            heroImage="/images.png"
+            heroImage={getOptimizedUrl("https://images.unsplash.com/photo-1629744418692-345355518e78?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")}
+            image2={getOptimizedUrl("https://images.unsplash.com/photo-1629186812846-ac85f7d984d6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")}
             subtitle="Contact us to design your proposal completely to your measure."
             description="We transform hotel rooms or private villas into perfect romantic settings to surprise for anniversaries, birthdays, or special getaways. Available in hotels and beach destinations across various cities in Mexico (prior coordination with the hotel required)."
             slug="hotel-beach-surprise-decoration"
@@ -156,7 +159,7 @@ function DecorationSorpresaEn() {
             ]}
             plans={[
                 {
-                    backgroundImage: "image.png",
+                    backgroundImage: getOptimizedUrl("https://images.unsplash.com/photo-1678977023660-28790da72185?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     color: "#61a9bd",
                     description: " ",
                     features: [],
@@ -178,7 +181,7 @@ function DecorationSorpresaEn() {
                     slug: "sorpresa-esencial"
                 },
                 {
-                    backgroundImage: "image.png",
+                    backgroundImage: getOptimizedUrl("https://images.unsplash.com/photo-1678977023660-28790da72185?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     color: "#61a9bd",
                     description: "For celebrations in boutique hotels or private villas.",
                     features: [],
@@ -203,7 +206,7 @@ function DecorationSorpresaEn() {
                     slug: "sorpresa-signature"
                 },
                 {
-                    backgroundImage: "image.png",
+                    backgroundImage: getOptimizedUrl("https://images.unsplash.com/photo-1678977023660-28790da72185?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     color: "#61a9bd",
                     description: "Higher visual production and a more impactful experience.",
                     features: [],
@@ -227,7 +230,7 @@ function DecorationSorpresaEn() {
 
             cotizacion={
                 {
-                    background: "images.png",
+                    background: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1673448758890-bd81d34dae1c?q=80&w=1033&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     title: "Custom Quote – Decorations",
                     description: "We can carry out this experience in:",
                     lists: [

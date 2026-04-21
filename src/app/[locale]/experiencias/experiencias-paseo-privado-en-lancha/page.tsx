@@ -1,4 +1,5 @@
 import { ExperiencePage } from "@/components/ExperiencePage";
+import { getOptimizedUrl } from "@/lib/images";
 import { useLocale } from "next-intl";
 
 function PaseoPrivadoLanchaES() {
@@ -6,8 +7,8 @@ function PaseoPrivadoLanchaES() {
         <ExperiencePage
             title="Experiencias Paseo Privado en Lancha"
             subtitle="Vive un momento íntimo navegando en un entorno natural espectacular"
-            heroImage="/images/lancha-hero.jpg"
-            image2="/images/lancha-bg-section.jpg"
+            heroImage={getOptimizedUrl("https://images.unsplash.com/photo-1704070530670-daf414e235ed?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")}
+            image2={getOptimizedUrl("https://images.unsplash.com/photo-1553505192-23b5329dcf06?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")}
             idealSectionTitle="Ideal para:"
             description={`Vive un momento íntimo navegando en un entorno natural espectacular.
       
@@ -50,7 +51,7 @@ Creamos experiencias privadas en lancha para parejas, aniversarios, propuestas o
                     name: "Paseo Privado Esencial",
                     price: 3600,
                     color: "#3B9FD8", // Azul cielo
-                    backgroundImage: "/images/lancha-esencial.jpg",
+                    backgroundImage: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1677698305586-cc475cfb0962?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     duration: "2 horas de navegación",
                     description: "Una experiencia romántica sencilla, ideal para desconectarse y disfrutar del paisaje.",
                     features: ["Navegación Privada", "Bebida de Bienvenida", "Música Ambiental"],
@@ -72,7 +73,7 @@ Creamos experiencias privadas en lancha para parejas, aniversarios, propuestas o
                     name: "Paseo Privado Signature",
                     price: 7600,
                     color: "#273449", // Tu azul corporativo
-                    backgroundImage: "/images/lancha-signature.jpg",
+                    backgroundImage: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1677698305586-cc475cfb0962?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     duration: "2 horas de navegación más coordinación de acceso al muelle",
                     description: "Nuestra experiencia equilibrada que incluye coordinación de acceso preferencial y detalles que elevan el momento.",
                     features: ["Coordinación de Acceso", "Tabla de Snacks", "Vino Espumoso"],
@@ -96,7 +97,7 @@ Creamos experiencias privadas en lancha para parejas, aniversarios, propuestas o
                     name: "Paseo Privado Luxury Experience",
                     price: 14500,
                     color: "#0077B6", // Azul océano profundo
-                    backgroundImage: "/images/lancha-luxury.jpg",
+                    backgroundImage: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1677698305586-cc475cfb0962?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     duration: "3 horas de navegación privada más coordinación personalizada previa",
                     description: "Diseñado para propuestas de matrimonio o hitos de vida. Incluye una producción visual y logística de alto nivel.",
                     features: ["Ideal Propuestas", "Decoración Premium", "Brindis VIP"],
@@ -120,7 +121,7 @@ Creamos experiencias privadas en lancha para parejas, aniversarios, propuestas o
             ]}
 
             cotizacion={{
-                background: "/images/quote-lancha.jpg",
+                background: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1677698305586-cc475cfb0962?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                 title: "Cotización Personalizada",
                 description: "Podemos realizar esta experiencia en distintos lagos y destinos dentro de México, adaptándonos al entorno y nivel de producción que desees. Si tu destino preferido no aparece en la lista, indícanos la ciudad o marina específica para validar disponibilidad y enviarte cotización personalizada.",
                 lists: [
@@ -146,8 +147,8 @@ function PaseoPrivadoLanchaEN() {
         <ExperiencePage
             title="Private Boat Trip Experiences"
             subtitle="Live an intimate moment sailing in a spectacular natural environment"
-            heroImage="/images/lancha-hero.jpg"
-            image2="/images/lancha-bg-section.jpg"
+            heroImage={getOptimizedUrl("https://images.unsplash.com/photo-1704070530670-daf414e235ed?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")}
+            image2={getOptimizedUrl("https://images.unsplash.com/photo-1553505192-23b5329dcf06?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")}
             idealSectionTitle="Ideal for:"
             description={`Live an intimate moment sailing in a spectacular natural environment.
       
@@ -188,7 +189,7 @@ We create private boat experiences for couples, anniversaries, proposals, or spe
                     name: "Essential Private Trip",
                     price: 3600,
                     color: "#3B9FD8",
-                    backgroundImage: "/images/lancha-esencial.jpg",
+                    backgroundImage: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1677698305586-cc475cfb0962?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     duration: "2 hours of sailing",
                     description: "A simple romantic experience, ideal for disconnecting and enjoying the scenery.",
                     features: ["Private Sailing", "Welcome Drink", "Ambient Music"],
@@ -210,7 +211,7 @@ We create private boat experiences for couples, anniversaries, proposals, or spe
                     name: "Signature Private Trip",
                     price: 7600,
                     color: "#273449",
-                    backgroundImage: "/images/lancha-signature.jpg",
+                    backgroundImage: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1677698305586-cc475cfb0962?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     duration: "2 hours of sailing plus pier access coordination",
                     description: "Our balanced experience that includes preferential access coordination and details that elevate the moment.",
                     features: ["Access Coordination", "Snack Platter", "Sparkling Wine"],
@@ -234,7 +235,7 @@ We create private boat experiences for couples, anniversaries, proposals, or spe
                     name: "Luxury Private Experience",
                     price: 14500,
                     color: "#0077B6",
-                    backgroundImage: "/images/lancha-luxury.jpg",
+                    backgroundImage: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1677698305586-cc475cfb0962?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     duration: "3 hours of private sailing plus personalized prior coordination",
                     description: "Designed for marriage proposals or life milestones. Includes high-level visual production and logistics.",
                     features: ["Ideal for Proposals", "Premium Decoration", "VIP Toast"],
@@ -258,7 +259,7 @@ We create private boat experiences for couples, anniversaries, proposals, or spe
             ]}
 
             cotizacion={{
-                background: "/images/quote-lancha.jpg",
+                background: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1677698305586-cc475cfb0962?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                 title: "Custom Quote",
                 description: "We can carry out this experience in different lakes and destinations within Mexico, adapting to the environment and the production level you desire. If your preferred destination is not on the list, let us know the specific city or marina to validate availability and send you a personalized quote.",
                 lists: [

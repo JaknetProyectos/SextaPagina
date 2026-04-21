@@ -1,4 +1,5 @@
 import { ExperiencePage } from "@/components/ExperiencePage";
+import { getOptimizedUrl } from "@/lib/images";
 import { useLocale } from "next-intl";
 
 function PicnicRomanticoES() {
@@ -6,8 +7,8 @@ function PicnicRomanticoES() {
         <ExperiencePage
             title="Experiencia Picnic Romántico / Boho en México"
             subtitle="Vive un momento íntimo, estético y cuidadosamente diseñado"
-            heroImage="/images/picnic-hero.jpg"
-            image2="/images/picnic-boho-bg.jpg"
+            heroImage={getOptimizedUrl("https://plus.unsplash.com/premium_photo-1678914346808-c89ba6317b6d?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")}
+            image2={getOptimizedUrl("https://plus.unsplash.com/premium_photo-1676667573119-40081df5d920?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")}
             idealSectionTitle="Ideal para:"
             description={`Creamos experiencias tipo picnic con decoración boho chic, detalles artesanales y una atmósfera pensada para sorprender, celebrar o simplemente disfrutar. Ideal en parques, jardines privados y destinos naturales, adaptando cada montaje al entorno para crear un ambiente mágico y relajado.`}
 
@@ -47,7 +48,7 @@ function PicnicRomanticoES() {
             idealPara={[
                 {
                     title: "Date romántico inolvidable",
-                    image: "/images/ideal-date.jpg",
+                    image: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1676667573119-40081df5d920?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     items: [
                         "Cada historia de amor es distinta, y cada celebración merece un diseño único."
 
@@ -55,7 +56,7 @@ function PicnicRomanticoES() {
                 },
                 {
                     title: "Ideal en",
-                    image: "/images/ideal-proposals.jpg",
+                    image: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1678914346808-c89ba6317b6d?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     items: [
                         "Aniversarios",
                         "Propuestas de matrimonio",
@@ -66,7 +67,7 @@ function PicnicRomanticoES() {
                 },
                 {
                     title: "También podemos integrar elementos adicionales como:",
-                    image: "/images/ideal-bday.jpg",
+                    image: getOptimizedUrl("https://images.unsplash.com/photo-1630371223444-708db033c7c6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     items: [
                         "Decoración temática especial",
                         "Letras gigantes o mensaje personalizado",
@@ -82,7 +83,7 @@ function PicnicRomanticoES() {
                 },
                 {
                     title: "Nuestro equipo diseña cada experiencia con base en:",
-                    image: "/",
+                    image: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1676667573119-40081df5d920?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     items: [
                         "Destino",
                         "Número de personas",
@@ -100,7 +101,7 @@ function PicnicRomanticoES() {
                     name: "Picnic Boho Esencial",
                     price: 7500,
                     color: "#D4A373", // Tono madera/boho
-                    backgroundImage: "/images/picnic-esencial.jpg",
+                    backgroundImage: getOptimizedUrl("https://images.unsplash.com/photo-1639048759545-07cdc2fc63e2?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     duration: "2 hrs de experiencia (incluye montaje previo)",
                     description: "Perfecta para una sorpresa romántica sencilla pero elegante.",
                     features: ["Montaje Estándar", "Tabla de Quesos", "Vino Incluido"],
@@ -122,7 +123,7 @@ function PicnicRomanticoES() {
                     name: "Picnic Romántico Boho Signature",
                     price: 12800,
                     color: "#273449", // Color corporativo para el producto estrella
-                    backgroundImage: "/images/picnic-signature.jpg",
+                    backgroundImage: getOptimizedUrl("https://images.unsplash.com/photo-1639048759545-07cdc2fc63e2?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     duration: "3 hrs montaje y 2 hrs de picnic",
                     description: "Nuestra experiencia más solicitada. Un equilibrio perfecto entre romanticismo, estética y producción cuidada.",
                     features: ["Menú Gourmet", "Decoración Premium", "Botella de Espumante"],
@@ -145,7 +146,7 @@ function PicnicRomanticoES() {
                     name: "Experiencia Picnic Boho Luxury Proposal",
                     price: 80000,
                     color: "#BC6C25", // Tono cobre/lujo
-                    backgroundImage: "/images/picnic-luxury.jpg",
+                    backgroundImage: getOptimizedUrl("https://images.unsplash.com/photo-1639048759545-07cdc2fc63e2?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     duration: "4 hrs montaje personalizado y 3 hrs de experiencia privada",
                     description: "Una experiencia premium con producción completa, ideal para propuestas de matrimonio o celebraciones inolvidables.",
                     features: ["Logística Sorpresa", "Foto y Video Incluido", "Violinista en vivo"],
@@ -169,7 +170,7 @@ function PicnicRomanticoES() {
             ]}
 
             cotizacion={{
-                background: "/images/quote-picnic.jpg",
+                background: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1676667573119-40081df5d920?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                 title: "Cotización Personalizada – Picnic Romántico",
                 description: "Si deseas realizar tu experiencia en otra ciudad o destino, compártenos el lugar específico y te enviaremos una propuesta personalizada considerando permisos, mobiliario y traslado.",
                 lists: [
@@ -184,8 +185,8 @@ function PicnicRomanticoEN() {
         <ExperiencePage
             title="Romantic / Boho Picnic Experience in Mexico"
             subtitle="Live an intimate, aesthetic, and carefully designed moment"
-            heroImage="/images/picnic-hero.jpg"
-            image2="/images/picnic-boho-bg.jpg"
+            heroImage={getOptimizedUrl("https://plus.unsplash.com/premium_photo-1678914346808-c89ba6317b6d?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")}
+            image2={getOptimizedUrl("https://plus.unsplash.com/premium_photo-1676667573119-40081df5d920?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")}
             idealSectionTitle="Ideal for:"
             description={`We create picnic-style experiences with boho-chic decor, handcrafted details, and an atmosphere designed to surprise, celebrate, or simply enjoy. Ideal in parks, private gardens, and natural destinations, adapting each setup to the surroundings to create a magical and relaxed environment.`}
 
@@ -225,14 +226,14 @@ function PicnicRomanticoEN() {
             idealPara={[
                 {
                     title: "Unforgettable Romantic Date",
-                    image: "/images/ideal-date.jpg",
+                    image: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1676667573119-40081df5d920?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     items: [
                         "Every love story is different, and every celebration deserves a unique design."
                     ]
                 },
                 {
                     title: "Perfect for",
-                    image: "/images/ideal-proposals.jpg",
+                    image: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1676667573119-40081df5d920?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     items: [
                         "Anniversaries",
                         "Marriage proposals",
@@ -243,7 +244,7 @@ function PicnicRomanticoEN() {
                 },
                 {
                     title: "We can also integrate additional elements such as:",
-                    image: "/images/ideal-bday.jpg",
+                    image: getOptimizedUrl("https://images.unsplash.com/photo-1639048759545-07cdc2fc63e2?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     items: [
                         "Special themed decoration",
                         "Giant letters or personalized messages",
@@ -259,7 +260,7 @@ function PicnicRomanticoEN() {
                 },
                 {
                     title: "Our team designs each experience based on:",
-                    image: "/",
+                    image: getOptimizedUrl("https://images.unsplash.com/photo-1630276740239-5d9c23d49531?q=80&w=725&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     items: [
                         "Destination",
                         "Number of guests",
@@ -277,7 +278,7 @@ function PicnicRomanticoEN() {
                     name: "Essential Boho Picnic",
                     price: 7500,
                     color: "#D4A373",
-                    backgroundImage: "/images/picnic-esencial.jpg",
+                    backgroundImage: getOptimizedUrl("https://images.unsplash.com/photo-1639048759545-07cdc2fc63e2?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     duration: "2 hrs of experience (includes prior setup)",
                     description: "Perfect for a simple yet elegant romantic surprise.",
                     features: ["Standard Setup", "Cheese Board", "Wine Included"],
@@ -299,7 +300,7 @@ function PicnicRomanticoEN() {
                     name: "Signature Romantic Boho Picnic",
                     price: 12800,
                     color: "#273449",
-                    backgroundImage: "/images/picnic-signature.jpg",
+                    backgroundImage: getOptimizedUrl("https://images.unsplash.com/photo-1639048759545-07cdc2fc63e2?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     duration: "3 hrs setup and 2 hrs picnic",
                     description: "Our most requested experience. A perfect balance between romance, aesthetics, and careful production.",
                     features: ["Gourmet Menu", "Premium Decoration", "Sparkling Wine"],
@@ -322,7 +323,7 @@ function PicnicRomanticoEN() {
                     name: "Luxury Proposal Boho Picnic Experience",
                     price: 80000,
                     color: "#BC6C25",
-                    backgroundImage: "/images/picnic-luxury.jpg",
+                    backgroundImage:getOptimizedUrl("https://images.unsplash.com/photo-1639048759545-07cdc2fc63e2?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                     duration: "4 hrs custom setup and 3 hrs private experience",
                     description: "A premium experience with full production, ideal for marriage proposals or unforgettable celebrations.",
                     features: ["Surprise Logistics", "Photo & Video Included", "Live Violinist"],
@@ -346,7 +347,7 @@ function PicnicRomanticoEN() {
             ]}
 
             cotizacion={{
-                background: "/images/quote-picnic.jpg",
+                background: getOptimizedUrl("https://plus.unsplash.com/premium_photo-1676667573119-40081df5d920?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                 title: "Custom Quote – Romantic Picnic",
                 description: "If you wish to have your experience in another city or destination, share the specific location with us and we will send you a personalized proposal considering permits, furniture, and transfer.",
                 lists: []
