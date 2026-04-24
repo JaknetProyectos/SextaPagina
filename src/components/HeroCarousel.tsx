@@ -42,9 +42,10 @@ export function HeroCarousel() {
       {slidesConfig.map((slide, index) => (
         <div
           key={slide.id}
-          className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-            index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
-          }`}
+          className={`absolute inset-0 transition-all duration-1000 ease-in-out ${index === currentSlide
+              ? "opacity-100 scale-100 z-10" // El activo sube y recibe clics
+              : "opacity-0 scale-105 pointer-events-none" // Los ocultos no estorban
+            }`}
         >
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -92,11 +93,10 @@ export function HeroCarousel() {
           <button
             key={`dot-${index}`}
             onClick={() => setCurrentSlide(index)}
-            className={`transition-all duration-300 rounded-full ${
-              index === currentSlide
+            className={`transition-all duration-300 rounded-full ${index === currentSlide
                 ? "bg-orange-400 w-10 h-3"
                 : "bg-white w-3 h-3 hover:bg-green-400"
-            }`}
+              }`}
           />
         ))}
       </div>
