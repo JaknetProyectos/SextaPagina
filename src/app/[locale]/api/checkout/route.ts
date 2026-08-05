@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { processKeycopPayment } from '@/lib/payment';
+import { processEtominPayment } from '@/lib/payment';
 import { getTicketEmailHTML } from '@/lib/emailTemplates';
 import { Resend } from 'resend';
 
@@ -10,12 +10,12 @@ export async function POST(req: Request) {
         const body = await req.json();
         const { customer, card, items, total } = body;
 
-        // 1. Procesar el pago con Keycop
-        const paymentResult = await processKeycopPayment({
+        // 1. Procesar el pago con Etomin
+        const paymentResult = await processEtominPayment({
             amount: total,
-            reference: `OD-${Date.now()}`,
+            orderId: `OD-${Date.now()}`,
             customer: customer,
-            card: card,
+            cardData: card,
         });
 
         if (!paymentResult.success) {

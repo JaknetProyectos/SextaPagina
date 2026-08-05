@@ -3,8 +3,7 @@
 import { CartItem } from "@/interfaces/cart/CartItem";
 import { CardInformation } from "@/interfaces/payment/CardInformation";
 import { CustomerInformation } from "@/interfaces/payment/CustomerInformation";
-import { PaymentRequest } from "@/interfaces/payment/PaymentRequest";
-import { processKeycopPayment } from "@/lib/payment";
+import { PaymentData, processEtominPayment } from "@/lib/payment";
 import { useEffect, useMemo, useState } from "react";
 
 export function useCart() {
@@ -59,15 +58,30 @@ export function useCart() {
 
         setLoading(true);
         try {
-            const paymentRequest: PaymentRequest = {
+            const paymentRequest: PaymentData = {
                 amount: cartTotal,
-                reference: `OD-WEB-${Date.now()}`, // Generamos referencia única
-                customer: customerData,
-                card: cardData,
-                currency: "484"
+                orderId: `OD-WEB-${Date.now()}`, // Generamos referencia única
+                customer: {
+                    nombre: customerData.firstName,
+                    apellido: customerData.lastName,
+                    email: customerData.email,
+                    telefono: customerData.phone1,
+                    direccion: customerData.address1,
+                    ciudad: customerData.city,
+                    estado: customerData.state,
+                    cp: customerData.postalCode
+                },
+                cardData: {
+                    cvv: cardData.cvv,
+                    month: cardData.expirationMonth,
+                    name: cardData.cardNumber,
+                    number: cardData.cardNumber,
+                    year: cardData.expirationYear
+                },
+
             };
 
-            const result = await processKeycopPayment(paymentRequest);
+            const result = await processEtominPayment(paymentRequest);
 
             if (result.success) {
                 clearCart();

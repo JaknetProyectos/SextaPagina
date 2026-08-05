@@ -1,83 +1,138 @@
 'use server';
+
 import axios from 'axios';
 
-import { CardInformation } from '@/interfaces/payment/CardInformation';
-import { PaymentRequest } from '@/interfaces/payment/PaymentRequest';
-import { PaymentResponse } from '@/interfaces/payment/PaymentResponse';
-import { CustomerInformation } from '@/interfaces/payment/CustomerInformation';
+export interface PaymentData {
+  amount: number;
+  orderId: string;
 
+  cardData: {
+    number: string;
+    name: string;
+    month: string;
+    year: string;
+    cvv: string;
+  };
 
-const API_URL = "https://pagos.keycop.com.mx/api/v1"
+  customer: {
+    nombre: string;
+    apellido: string;
+    email: string;
+    telefono: string;
+    direccion: string;
+    direccion2?: string;
+    ciudad: string;
+    estado: string;
+    pais?: string;
+    cp: string;
+    empresa?: string;
+  };
 
+  metadata?: {
+    ip?: string;
+    deviceId?: string;
+    notes?: string;
+  };
+}
 
-async function getAuthToken() {
-  const { data } = await axios.post(`${API_URL}/signin`, {
-    email: process.env.KEYCOP_EMAIL,
-    password: process.env.KEYCOP_PASSWORD
+const API_URL = "https://pagos.etomin.com/api/v1";
+
+// Instancia global con los headers base que exige Etomin
+const etominClient = axios.create({
+  baseURL: API_URL,
+  headers: {
+    'accept': 'application/json',
+    'content-type': 'application/json',
+  },
+});
+
+async function getAuthToken(): Promise<string> {
+  const { data } = await etominClient.post('/signin', {
+    email: process.env.ETOMIN_USER,
+    password: process.env.ETOMIN_PASSWORD,
   });
 
   return data.authToken;
 }
 
+async function tokenizeCard(token: string, payment: PaymentData): Promise<string> {
+  const card = payment.cardData;
 
-async function tokenizeCard(token: string, card: Omit<CardInformation, 'cvv'>) {
-  const { data } = await axios.post(`${API_URL}/card/tokenizer`, {
-    cardData: {
-      cardNumber: card.cardNumber.replace(/\s/g, ''), // Limpiar espacios
-      cardholderName: card.cardholderName,
-      expirationYear: card.expirationYear,
-      expirationMonth: card.expirationMonth
+  const { data } = await etominClient.post(
+    '/card/tokenizer',
+    {
+      cardData: {
+        cardNumber: card.number.replace(/\s/g, ''), // Limpiar espacios
+        cardholderName: card.name,
+        expirationYear: card.year,
+        expirationMonth: card.month,
+      },
+    },
+    {
+      headers: { Authorization: `Bearer ${token}` },
     }
-  }, {
-    headers: { Authorization: `Bearer ${token}` }
-  });
+  );
 
   return data.cardNumberToken;
 }
 
-
-export async function processKeycopPayment(input: PaymentRequest): Promise<PaymentResponse> {
+export async function processEtominPayment(payment: PaymentData) {
   try {
     // 1. Autenticación
     const authToken = await getAuthToken();
 
-    // 2. Tokenización (Sin el CVV)
-    const cardToken = await tokenizeCard(authToken, input.card);
+    // 2. Tokenización de la tarjeta (Sin el CVV)
+    const cardToken = await tokenizeCard(authToken, payment);
 
     // 3. Ejecución de la Venta
     const salePayload = {
-      amount: input.amount,
-      currency: input.currency || "484",
-      reference: input.reference,
+      amount: Number(payment.amount),
+      currency: "484", // MXN
+      reference: payment.orderId,
+
       customerInformation: {
-        ...input.customer,
-        ip: input.customer.ip || "127.0.0.1" // Fallback IP
+        firstName: payment.customer.nombre,
+        lastName: payment.customer.apellido,
+        email: payment.customer.email,
+        phone1: payment.customer.telefono,
+        address1: payment.customer.direccion,
+        address2: payment.customer.direccion2 || "",
+        city: payment.customer.ciudad,
+        state: payment.customer.estado,
+        postalCode: payment.customer.cp,
+        country: payment.customer.pais || "MX",
+        company: payment.customer.empresa || "",
+        ip: payment.metadata?.ip || "127.0.0.1",
       },
+
       cardData: {
         cardNumberToken: cardToken,
-        cvv: input.card.cvv
-      }
+        cvv: payment.cardData.cvv,
+      },
     };
 
-    const { data } = await axios.post(`${API_URL}/sale`, salePayload, {
-      headers: { Authorization: `Bearer ${authToken}` }
+    const { data } = await etominClient.post('/sale', salePayload, {
+      headers: { Authorization: `Bearer ${authToken}` },
     });
 
+    // Validamos el estatus de forma insensible a mayúsculas/minúsculas ("approved" / "APPROVED")
+    const isApproved = data.status?.toUpperCase() === "APPROVED";
 
     return {
-      success: data.status == "APPROVED",
+      success: isApproved,
       orderId: data.orderId,
       reference: data.reference,
-      status: data.status
+      transactionId: data.transactionId,
+      status: data.status,
+      data: data,
     };
 
   } catch (error: any) {
-
-    console.error("Keycop Payment Error:", error.response?.data || error.message);
+    console.error("Etomin Payment Error:", error.response?.data || error.message);
     return {
       success: false,
       status: "error",
-      error: error.response?.data?.message || "Error procesando el pago"
+      error: error.response?.data?.message || "Error procesando el pago con Etomin",
     };
   }
 }

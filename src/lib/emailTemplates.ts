@@ -35,7 +35,7 @@ export const getTicketEmailHTML = (orderData: any) => {
         </div>
         
         <div class="content">
-          <p style="font-size: 14px; font-weight: bold; color: #111827; margin-bottom: 25px;">HOLA, ${customer.firstName.toUpperCase()}:</p>
+          <p style="font-size: 14px; font-weight: bold; color: #111827; margin-bottom: 25px;">HOLA, ${customer.nombre.toUpperCase()}:</p>
           <p style="font-size: 14px; color: #4b5563; line-height: 1.6;">Tu pago ha sido procesado exitosamente. Aquí tienes el detalle de tu próxima aventura:</p>
           
           <table style="width: 100%; border-collapse: collapse; margin-top: 30px;">
@@ -55,7 +55,7 @@ export const getTicketEmailHTML = (orderData: any) => {
         </div>
 
         <div class="footer">
-          <p>ESTO ES UN COMPROBANTE DE PAGO SEGURO VIA KEYCOP</p>
+          <p>ESTO ES UN COMPROBANTE DE PAGO SEGURO VIA ETOMIN</p>
           <p style="margin-top: 10px;">TURIVANA &copy; 2026</p>
         </div>
       </div>

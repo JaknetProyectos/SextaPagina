@@ -310,7 +310,7 @@
         "card_holder": "Cardholder Name"
       },
       "submit_button": "CONFIRM PAYMENT",
-      "encryption_note": "Transaction encrypted by Keycop SSL"
+      "encryption_note": "Transaction encrypted by Etomin SSL"
     },
     "modal": {
       "success_title": "Payment Confirmed!",

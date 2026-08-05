@@ -37,22 +37,22 @@ export default function CartPage() {
     }>({ show: false, type: 'success', message: '' });
 
     const [customer, setCustomer] = useState({
-        firstName: "",
-        lastName: "",
+        nombre: "",
+        apellido: "",
         email: "",
-        phone1: "",
-        city: "",
-        address1: "",
-        postalCode: "",
-        state: "",
-        country: "MX",
+        telefono: "",
+        ciudad: "",
+        direccion: "",
+        cp: "",
+        estado: "",
+        pais: "MX",
     });
 
     const [card, setCard] = useState({
-        cardNumber: "",
-        cardholderName: "",
-        expirationYear: "",
-        expirationMonth: "",
+        number: "",
+        name: "",
+        year: "",
+        month: "",
         cvv: "",
     });
 
@@ -186,13 +186,13 @@ export default function CartPage() {
                                         <User className="w-5 h-5 text-gray-400" /> {t("form.contact_title")}
                                     </h3>
                                     <div className="grid grid-cols-2 gap-4">
-                                        <input required value={customer.firstName} name="firstName" placeholder={t("form.placeholders.first_name")} onChange={(e) => handleInputChange(e, 'customer')} className="col-span-1 input-odyssey" />
-                                        <input required value={customer.lastName} name="lastName" placeholder={t("form.placeholders.last_name")} onChange={(e) => handleInputChange(e, 'customer')} className="col-span-1 input-odyssey" />
-                                        <input required value={customer.email} name="email" type="email" placeholder={t("form.placeholders.email")} onChange={(e) => handleInputChange(e, 'customer')} className="col-span-2 input-odyssey" />
-                                        <input required value={customer.phone1} name="phone1" placeholder={t("form.placeholders.phone")} onChange={(e) => handleInputChange(e, 'customer')} className="col-span-2 input-odyssey" />
-                                        <input required value={customer.address1} name="address1" placeholder={t("form.placeholders.address")} onChange={(e) => handleInputChange(e, 'customer')} className="col-span-2 input-odyssey" />
-                                        <input required value={customer.city} name="city" placeholder={t("form.placeholders.city")} onChange={(e) => handleInputChange(e, 'customer')} className="col-span-1 input-odyssey" />
-                                        <input required value={customer.postalCode} name="postalCode" placeholder={t("form.placeholders.zip")} onChange={(e) => handleInputChange(e, 'customer')} className="col-span-1 input-odyssey" />
+                                        <input required value={customer.nombre} name="nombre" autoComplete="given-name" placeholder={t("form.placeholders.first_name")} onChange={(e) => handleInputChange(e, 'customer')} className="col-span-1 input-odyssey" />
+                                        <input required value={customer.apellido} name="apellido" autoComplete="family-name" placeholder={t("form.placeholders.last_name")} onChange={(e) => handleInputChange(e, 'customer')} className="col-span-1 input-odyssey" />
+                                        <input required value={customer.email} name="email" type="email" autoComplete="email" placeholder={t("form.placeholders.email")} onChange={(e) => handleInputChange(e, 'customer')} className="col-span-2 input-odyssey" />
+                                        <input required value={customer.telefono} name="telefono" type="tel" autoComplete="tel" placeholder={t("form.placeholders.phone")} onChange={(e) => handleInputChange(e, 'customer')} className="col-span-2 input-odyssey" />
+                                        <input required value={customer.direccion} name="direccion" autoComplete="street-address" placeholder={t("form.placeholders.address")} onChange={(e) => handleInputChange(e, 'customer')} className="col-span-2 input-odyssey" />
+                                        <input required value={customer.ciudad} name="ciudad" autoComplete="address-level2" placeholder={t("form.placeholders.city")} onChange={(e) => handleInputChange(e, 'customer')} className="col-span-1 input-odyssey" />
+                                        <input required value={customer.cp} name="cp" autoComplete="postal-code" placeholder={t("form.placeholders.zip")} onChange={(e) => handleInputChange(e, 'customer')} className="col-span-1 input-odyssey" />
                                     </div>
                                 </div>
 
@@ -202,18 +202,18 @@ export default function CartPage() {
                                         <h3 className="text-xl font-black uppercase tracking-tight flex items-center gap-3 text-gray-900">
                                             <CreditCard className="w-5 h-5 text-green-400" /> {t("form.payment_title")}
                                         </h3>
-                                        <div className="h-6 w-20 relative opacity-70 transition-all">
-                                            <Image src="/logo-keycop.webp" alt="Keycop" fill className="object-contain" />
+                                        <div className="relative  transition-all">
+                                            <Image src="/etomin.png" alt="Etomin" width={180} height={100} className="object-contain" />
                                         </div>
                                     </div>
 
                                     <div className="space-y-4">
-                                        <input value={card.cardNumber} required name="cardNumber" placeholder={t("form.placeholders.card_number")} onChange={(e) => handleInputChange(e, 'card')} className="w-full input-odyssey" maxLength={16} />
-                                        <input value={card.cardholderName} required name="cardholderName" placeholder={t("form.placeholders.card_holder")} onChange={(e) => handleInputChange(e, 'card')} className="w-full input-odyssey uppercase" />
+                                        <input value={card.number} required name="number" autoComplete="cc-number" placeholder={t("form.placeholders.card_number")} onChange={(e) => handleInputChange(e, 'card')} className="w-full input-odyssey" maxLength={16} />
+                                        <input value={card.name} required name="name" autoComplete="cc-name" placeholder={t("form.placeholders.card_holder")} onChange={(e) => handleInputChange(e, 'card')} className="w-full input-odyssey uppercase" />
                                         <div className="grid grid-cols-3 gap-4">
-                                            <input required value={card.expirationMonth} name="expirationMonth" placeholder="MM" onChange={(e) => handleInputChange(e, 'card')} className="input-odyssey" maxLength={2} />
-                                            <input required value={card.expirationYear} name="expirationYear" placeholder="YY" onChange={(e) => handleInputChange(e, 'card')} className="input-odyssey" maxLength={2} />
-                                            <input required value={card.cvv} name="cvv" type="password" placeholder="CVV" onChange={(e) => handleInputChange(e, 'card')} className="input-odyssey" maxLength={4} />
+                                            <input required value={card.month} name="month" autoComplete="cc-exp-month" placeholder="MM" onChange={(e) => handleInputChange(e, 'card')} className="input-odyssey" maxLength={2} />
+                                            <input required value={card.year} name="year" autoComplete="cc-exp-year" placeholder="YY" onChange={(e) => handleInputChange(e, 'card')} className="input-odyssey" maxLength={2} />
+                                            <input required value={card.cvv} name="cvv" autoComplete="cc-csc" type="password" placeholder="CVV" onChange={(e) => handleInputChange(e, 'card')} className="input-odyssey" maxLength={4} />
                                         </div>
                                     </div>
 
