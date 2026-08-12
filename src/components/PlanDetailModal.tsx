@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import {
@@ -54,7 +54,17 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
   const [fecha, setFecha] = useState("");
   const [added, setAdded] = useState(false);
 
-  const router = useRouter()
+  const router = useRouter();
+
+  // Bloqueo y restauración limpia del scroll del body mientras el modal esté activo
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = originalOverflow || "unset";
+    };
+  }, []);
 
   const handleAddToCart = () => {
     if (!fecha) {
@@ -75,12 +85,11 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
     addItem(newItem);
     setAdded(true);
 
-    router.replace("/cart")
-
+    // Cerrar primero el modal para restaurar el DOM y luego navegar
     setTimeout(() => {
-      setAdded(false);
       onClose();
-    }, 1500);
+      router.push(`/${locale}/cart`);
+    }, 800);
   };
 
   return (
@@ -97,8 +106,9 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
         </div>
 
         <button
+          type="button"
           onClick={onClose}
-          className="absolute top-28 right-8 md:right-16 p-5 bg-white text-gray-900 rounded-full hover:bg-orange-400 hover:text-white transition-all z-30 shadow-none border-none group"
+          className="absolute top-28 right-8 md:right-16 p-5 bg-white text-gray-900 rounded-full hover:bg-orange-400 hover:text-white transition-all z-30 shadow-none border-none group cursor-pointer"
         >
           <X className="w-8 h-8 group-hover:rotate-90 transition-transform" />
         </button>
@@ -108,11 +118,11 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
             {plan.name}
           </h2>
           <div className="inline-block bg-green-400 text-white px-6 py-2 rounded-xl text-xl md:text-2xl font-black tracking-tighter uppercase">
-            {new Intl.NumberFormat(locale === 'es' ? 'es-MX' : 'en-US', {
-              style: 'currency',
-              currency: 'MXN',
+            {new Intl.NumberFormat(locale === "es" ? "es-MX" : "en-US", {
+              style: "currency",
+              currency: "MXN",
               maximumFractionDigits: 0
-            }).format(plan.price)} 
+            }).format(plan.price)}
             <span className="text-sm opacity-80 ml-2"> {t("tax_included")}</span>
           </div>
         </div>
@@ -120,7 +130,6 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
 
       <div className="container mx-auto px-4 py-24">
         <div className="grid lg:grid-cols-3 gap-16 items-start">
-
           <div className="lg:col-span-2 space-y-20">
             {/* Descripción */}
             <section className="max-w-3xl">
@@ -201,6 +210,7 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
                   </label>
                   <div className="flex items-center bg-white rounded-2xl p-2 h-[64px]">
                     <button
+                      type="button"
                       onClick={() => setPax(Math.max(1, pax - 1))}
                       className="w-12 h-12 flex items-center justify-center bg-gray-50 rounded-xl hover:bg-orange-400 hover:text-white transition-colors"
                     >
@@ -208,6 +218,7 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
                     </button>
                     <span className="flex-1 text-center font-black text-2xl text-gray-900">{pax}</span>
                     <button
+                      type="button"
                       onClick={() => setPax(pax + 1)}
                       className="w-12 h-12 flex items-center justify-center bg-gray-50 rounded-xl hover:bg-green-400 hover:text-white transition-colors"
                     >
@@ -217,10 +228,11 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
                 </div>
 
                 <button
+                  type="button"
                   onClick={handleAddToCart}
                   disabled={added}
-                  className={`h-[64px] rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-4 transition-all group ${
-                    added ? 'bg-green-500 text-white' : 'bg-gray-900 text-white hover:bg-green-400'
+                  className={`h-[64px] rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-4 transition-all group cursor-pointer ${
+                    added ? "bg-green-500 text-white" : "bg-gray-900 text-white hover:bg-green-400"
                   }`}
                 >
                   {added ? (
@@ -234,7 +246,7 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
             </div>
           </div>
 
-          {/* Sidebar Sidebar */}
+          {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-32 bg-gray-900 rounded-[40px] p-12 text-white text-center border-none">
               <div className="w-20 h-20 bg-green-400 rounded-[24px] flex items-center justify-center mx-auto mb-8 -rotate-6">
@@ -244,7 +256,10 @@ export const PlanDetailModal = ({ plan, exp, onClose }: PlanDetailModalProps) =>
               <p className="text-gray-400 font-bold mb-10 text-lg leading-relaxed">
                 {t("sidebar.description")}
               </p>
-              <button className="w-full bg-white text-gray-900 py-6 rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-orange-400 hover:text-white transition-all group">
+              <button
+                type="button"
+                className="w-full bg-white text-gray-900 py-6 rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-orange-400 hover:text-white transition-all group cursor-pointer"
+              >
                 <MessageCircle className="w-6 h-6 group-hover:animate-pulse" />
                 {t("sidebar.button")}
               </button>

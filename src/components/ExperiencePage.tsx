@@ -93,13 +93,20 @@ export function ExperiencePage({
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
 
   useEffect(() => {
-    if (selectedPlan) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "unset";
+    if (selectedPlan) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [selectedPlan]);
 
   const handleScroll = (id: string, distance: number) => {
     const el = document.getElementById(id);
-    if (el) el.scrollBy({ left: distance, behavior: 'smooth' });
+    if (el) el.scrollBy({ left: distance, behavior: "smooth" });
   };
 
   return (
@@ -138,9 +145,9 @@ export function ExperiencePage({
             {infoLists.map((list, index) => {
               const IconComponent = IconMap[list.icon] || Info;
               return (
-                <details 
-                  key={index} 
-                  className="group bg-gray-50 rounded-[32px] overflow-hidden transition-all open:bg-green-50" 
+                <details
+                  key={index}
+                  className="group bg-gray-50 rounded-[32px] overflow-hidden transition-all open:bg-green-50"
                   open={list.isOpen}
                 >
                   <summary className="list-none flex justify-between items-center cursor-pointer p-8 font-black text-gray-900 text-xl uppercase tracking-tight">
@@ -184,14 +191,16 @@ export function ExperiencePage({
               </div>
               <div className="flex gap-4">
                 <button
-                  onClick={() => handleScroll('slider-ideal', -432)}
-                  className="p-6 rounded-2xl bg-white/10 text-white hover:bg-white hover:text-gray-900 transition-all"
+                  type="button"
+                  onClick={() => handleScroll("slider-ideal", -432)}
+                  className="p-6 rounded-2xl bg-white/10 text-white hover:bg-white hover:text-gray-900 transition-all cursor-pointer"
                 >
                   <ChevronLeft className="w-8 h-8" />
                 </button>
                 <button
-                  onClick={() => handleScroll('slider-ideal', 432)}
-                  className="p-6 rounded-2xl bg-white/10 text-white hover:bg-white hover:text-gray-900 transition-all"
+                  type="button"
+                  onClick={() => handleScroll("slider-ideal", 432)}
+                  className="p-6 rounded-2xl bg-white/10 text-white hover:bg-white hover:text-gray-900 transition-all cursor-pointer"
                 >
                   <ChevronRight className="w-8 h-8" />
                 </button>
@@ -238,13 +247,13 @@ export function ExperiencePage({
       {/* 4. Planes */}
       <section className="relative py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div 
-            className="w-full h-full bg-cover bg-fixed bg-center" 
+          <div
+            className="w-full h-full bg-cover bg-fixed bg-center"
             style={{ backgroundImage: `url('${image2 || heroImage}')` }}
           />
           <div className="absolute inset-0 bg-gray-900/60 backdrop-blur-xl" />
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter">
@@ -255,9 +264,9 @@ export function ExperiencePage({
 
           <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {plans.map((plan, i) => (
-              <div 
-                key={i} 
-                className="rounded-[40px] p-12 text-center text-white flex flex-col items-center transition-all hover:-translate-y-4 border-none shadow-2xl" 
+              <div
+                key={i}
+                className="rounded-[40px] p-12 text-center text-white flex flex-col items-center transition-all hover:-translate-y-4 border-none shadow-2xl"
                 style={{ backgroundColor: plan.color }}
               >
                 <div className="bg-white/20 p-4 rounded-2xl mb-8">
@@ -267,19 +276,20 @@ export function ExperiencePage({
                 <p className="text-sm font-black tracking-widest opacity-90 mb-10 uppercase bg-black/10 px-4 py-2 rounded-lg">
                   {plan.description}
                 </p>
-                
+
                 <div className="mt-auto w-full">
                   <div className="text-5xl font-black mb-2 tracking-tighter">
                     <span className="text-2xl mr-1">$</span>
-                    {new Intl.NumberFormat(locale === 'es' ? 'es-MX' : 'en-US').format(plan.price)}
+                    {new Intl.NumberFormat(locale === "es" ? "es-MX" : "en-US").format(plan.price)}
                   </div>
                   <p className="text-xs font-black tracking-[0.2em] opacity-80 mb-10 uppercase">
                     {t("price_suffix")}
                   </p>
-                  
+
                   <button
+                    type="button"
                     onClick={() => setSelectedPlan(plan)}
-                    className="w-full bg-white text-gray-900 py-6 rounded-2xl font-black uppercase tracking-widest text-lg hover:bg-gray-900 hover:text-white transition-all"
+                    className="w-full bg-white text-gray-900 py-6 rounded-2xl font-black uppercase tracking-widest text-lg hover:bg-gray-900 hover:text-white transition-all cursor-pointer"
                   >
                     {t("details_button")}
                   </button>
@@ -306,7 +316,7 @@ export function ExperiencePage({
       <div className="py-20">
         <PagarCotizacion />
       </div>
-      
+
       <Footer />
     </main>
   );

@@ -17,7 +17,7 @@ export default function RootLayout({
     // No definimos lang aquí porque lo hará el layout dinámico
     <html suppressHydrationWarning>
       <head>
-        <Script crossOrigin="anonymous" src="//unpkg.com/same-runtime/dist/index.global.js" />
+        
       </head>
       <body>
         {children}
